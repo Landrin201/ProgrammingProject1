@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SolidCell()
+comment0.text=\r\n\ Constructor\ with\ no\ parameters.\r\n
+comment1.params=color
+comment1.target=SolidCell(java.awt.Color)
+comment1.text=\ \r\n\ Constructor\ with\ color\ as\ a\ parameter\r\n\ \r\n\ @param\ color\ Must\ be\ passed\ as\ a\ color\ object,\ not\ a\ RGB\ value.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ This\ method\ is\ here\ for\ debugging\ purposes.\r\n
+numComments=3

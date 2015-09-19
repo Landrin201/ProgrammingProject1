@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=TalkingRobot()
+comment0.text=\r\n\ Constructs\ a\ TalkingRobot\ object\r\n
+comment1.params=
+comment1.target=void\ sayAPhrase()
+comment1.text=\ Outputs\ a\ random\ phrase,\ depending\ on\ the\ time\ of\ day\r\n\ \ \ \ \ \ \ (at\ different\ times\ of\ day\ a\ different\ set\ of\ random\r\n\ \ \ \ \ \ \ phrases\ are\ used).\ <br>\r\n\ \ \ \ \ \ \ The\ time\ blocks\ are\:\ <br>\r\n\ \ \ \ \ \ \ 0-6,\ 6-8,\ 8-9,\ 9-11,\ 11-13,\ 13-17,\ 17-20,\ and\ 20-23.\ <br>\r\n\ \ \ \ \ \ \ To\ add\ more\ statements,\ edit\ the\ nested\ if/else\ statements.\ \r\n\ \ \ \ \ \ \ Remember\ to\ add\ more\ numbers\ to\ the\ random\ number\ generator,\ or\ \r\n\ \ \ \ \ \ \ the\ newly\ added\ phrases\ will\ never\ display\!\r\n
+comment2.params=
+comment2.target=void\ respondTo()
+comment2.text=\ Outputs\ a\ random\ phrase,\ depending\ on\ the\ question.\r\n\ \ \ \ \ \ \ (For\ each\ possible\ question,\ a\ different\ set\ of\ random\r\n\ \ \ \ \ \ \ phrases\ are\ used).\r\n\ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ The\ possible\ answers\ are\ random\ where\ it\ makes\ sense,\ and\ not\r\n\ \ \ \ \ \ \ random\ where\ it\ does\ not\ (there\ is\ only\ one\ answer\ for\ "What\ is\ \r\n\ \ \ \ \ \ \ your\ name?"\ for\ example).\ They\ are\ separated\ into\ nested\ if\ \r\n\ \ \ \ \ \ \ statements,\ and\ the\ if\ statements\ are\ written\ to\ be\ somewhat\ \r\n\ \ \ \ \ \ \ broad\ to\ avoid\ manipulation.\r\n
+numComments=3

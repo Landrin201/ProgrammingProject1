@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Mouse()
+comment0.text=\r\n\ Constructs\ a\ mouse.\r\n\ \ \r\n\ \ For\ now,\ the\ mouse\ is\ always\ a\ blue\ color\ block.\r\n
+comment1.params=
+comment1.target=void\ move()
+comment1.text=\r\n\ Abstract\ move\ method,\ tells\ the\ mouse\ to\ move.\r\n
+comment2.params=
+comment2.target=edu.kzoo.grid.Location\ getLocation()
+comment2.text=\r\n\ Returns\ the\ current\ location\ of\ the\ mouse.\r\n\ \r\n\ @return\ A\ Location\ object\ showing\ where\ the\ mouse\ is.\r\n
+numComments=3

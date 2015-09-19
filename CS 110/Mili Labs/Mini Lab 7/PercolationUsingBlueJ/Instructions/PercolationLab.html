@@ -1,0 +1,734 @@
+<html>
+<head>
+<title>Percolation Lab</title>
+   
+   <link href="mailto:abrady@kzoo.edu">
+   <link rel="STYLESHEET" type="text/css" href="styles.css"></head>
+<body bgcolor="#FFFFFF">
+<DIV ID=siteTitle>
+<H1>
+Percolation Lab</H1>
+  <h3>Simulating percolation through a
+    Porous Material</h3>
+</DIV>
+
+<DIV ID=author>
+  <a href="http://max.cs.kzoo.edu/~abrady/">Alyce Brady</a><br>
+  <a href="http://www.kzoo.edu/">Kalamazoo College</a>
+</DIV>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<p>
+<a name="start"></a>
+</p><h2>Getting Started</h2>
+
+<h4>Overview</h4>
+<p> The Percolation program simulates a substance percolating through a
+porous material, such as water or gas percolating through the
+ground.&nbsp;  The simulation shows percolation through a vertical
+two-dimensional slice through the material, represented by a bounded
+grid.&nbsp; At the beginning of the simulation, cells within the grid
+represent solid material or empty porous openings.&nbsp;
+A percolating substance is added to the porous material; as the
+simultion runs, the percolating substance spreads to other empty
+cells.
+</p>
+
+<p>
+Through a graphical user interface, the user can control how the
+simulation program is run, stepping through it one step at a time
+or running it for many steps until the Stop button is pressed.&nbsp;
+In each step, the percolating substance seeps a little further if
+it can, moving one cell at a time in one or more directions.
+</p>
+
+<p>
+Through the exercises in this project, you will be creating a class to
+represent solid material, and creating another class to represent a
+simple vertical percolator (a substance that sinks, or percolates
+down, but does not seep sideways nor percolate up).&nbsp;
+In a follow-up to this lab, you will create a class that can seep
+sideways or down, but still obeys gravity and does not percolate up.
+</p>
+
+<h4>Classes</h4>
+<p>You will be using several classes provided for you, shown in the
+  diagram below, as well as creating new classes of your own.&nbsp;
+  </p>
+  <center>
+      <img src="initialObjectDiagram.png" alt="object diagram">
+  </center>
+  <ul>
+      <li><code>PercolationApp</code> represents the application as a whole, and
+  contains the <code>main</code> method.&nbsp;
+  (You will make several small modifications to this method in the
+  course of the lab, although most of your focus will be on creating
+  new classes.)&nbsp;
+  <br/><br/></li>
+  <li>An object of the <code>PercolationGUI</code> class provides a
+  graphical user interface, allowing the user to create a simulated
+  material, specify how porous it should be, add a percolating
+  substance to it, and run the simulation.&nbsp;
+  <br/><br/></li>
+  <li>The code that actually controls the simulation, in reaction to user actions
+  through the graphical user interface, is found in the
+  <code>PercolationController</code> class and its
+  <code>SlowPercolationController</code> subclass.
+  <br/><br/></li>
+  <li>The vertical slice of the porous material is represented by a
+  <code>Grid</code>.&nbsp;
+  The <code>Grid</code> class comes from the GridPkg library, so
+  you won't see it in your project or BlueJ class diagram.&nbsp;
+  <br/><br/></li>
+  <li>Objects in a grid must be <code>GridObject</code> objects, so the
+  classes you create will be subclasses of the <code>GridObject</code>
+  class.&nbsp;
+  Throughout this lab you may want to have access to the
+  class documentation for the <code>Grid</code>, <code>GridObject</code>,
+  and <code>Location</code> classes.  This documentation can be found at
+  <a
+    href="http://www.cs.kzoo.edu/GridPkg/GridPkgClassDocumentation/">www.cs.kzoo.edu/GridPkg/GridPkgClassDocumentation/</a>.
+  <br/><br/></li>
+  <li>For now, ignore the <code>AbstractPercolator</code> class, which you
+  will use in a later mini-lab.
+  <br/><br/></li>
+  <li>The graphical user interface also uses objects of several other classes
+  not shown in the diagram above,
+  including a <code>PercolationDataFileHandler</code> that allows the
+  user to read sample configurations for porous materials from files, or
+  save a configuration to a file.&nbsp;
+  </li>
+  </ul>
+
+
+<!--
+<blockquote>
+  <p><i><font size="-1">[Educational prerequisites for this project: Students 
+    should be familiar with reading class documentation, constructing objects 
+    and invoking methods, the format of a class implementation (instance variables 
+    and methods), the basic flow control constructs (conditions and loops), and 
+    reading class documentation. Students should also be familiar with the <code>add</code>, 
+    <code>get</code>, and <code>size</code> methods of the 
+    <code>ArrayList</code> class.]</font></i></p>
+</blockquote>
+-->
+
+<table width="90%" align="center" border="1">
+  <tr> 
+    <td> <h4><i>Exercise 1 &#8212; Downloading the program:</i></h4>
+      <ol>
+        <li> Download the zip file that contains the starting code files for
+        the  Percolation Project
+        (<!-- either <code><a href="Percolation.zip">Percolation.zip</a></code>, -->
+        <code><a href="PercolationUsingBlueJ.zip">PercolationUsingBlueJ.zip</a></code>
+        <!-- or 
+              <code><a
+              href="PercolationUsingEclipse.zip">PercolationUsingEclipse.zip</a></code>-->)
+      and unzip it.  You should be able to open the project in BlueJ,
+      but you will not be able to compile and run it yet, because it is
+      missing several key classes that you will write.
+        </li>
+      </ol>
+		</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<h2><a name="start"></a>Creating Solid Cells</h2>
+
+<table width="90%" align="center" border="1">
+  <tr> 
+      <td> <h4><i>Exercise 2 &#8212; Creating the <code>SolidCell</code>
+          Class:</i></h4>
+      <ol> 
+          <li>
+          In BlueJ, create a new class called <code>SolidCell</code>.
+          This will represent a cell of solid matter in the porous
+          material.  Every class that represents objects in a grid must
+          inherit from the <code>GridObject</code> class; in this case,
+          we will actually inherit from the <code>ColorBlock</code>
+          class used by GridPlotter (which, in turn, inherits from
+          <code>GridObject</code>).
+          <blockquote>
+<pre>
+    java.lang.object
+      |
+      +--edu.kzoo.grid.GridObject
+            |
+            +--edu.kzoo.grid.ColorBlock
+                  |
+                  +--SolidCell</pre>
+          </blockquote>
+          <ul>
+          <li>
+          Your new <code>SolidCell</code>
+          class does not need any new instance variables, since it will
+          inherit all the state it needs from <code>ColorBlock</code>
+          and <code>GridObject</code>.
+          </li>
+          <li><code>SolidCell</code> should have two different
+          constructors:  one will take no parameters, and one takes one
+          parameter, which is a color.  Since a <code>ColorBlock</code>
+          expects to be told the color of the block, the constructor
+          with no parameters will always create itself as a black block.
+          </li>
+          <li>
+          Finally, your <code>SolidCell</code> should redefine the
+          <code>act</code> method from <code>GridObject</code>.  The
+          inherited method does absolutely nothing, but you will write
+          a new version of the method that prints out a debugging
+          message if debugging is turned on.
+          </li>
+          </ul>
+
+          <br/>
+          Your code should look like the following code. (Check both this
+          code and your final class against the bullet points above to
+          make sure that your class meets the specification.)
+<blockquote><pre>
+import java.awt.Color;
+import edu.kzoo.grid.ColorBlock;
+import edu.kzoo.util.Debug;
+
+/**
+ *  Percolation Program:<br>
+ *
+ *  Write a description of class SolidCell here.
+ * 
+ *  @author (your name) 
+ *  @version (a version number or a date)
+ */
+public class SolidCell extends ColorBlock
+{
+    // instance variables
+    //     NO new state -- inherits state from ColorBlock
+
+    /** Constructs a solid cell object with the default color
+     *  Color.BLACK.
+     */
+    public SolidCell()
+    {
+        super(Color.BLACK);     // invoke superclass constructor
+    }
+
+    /** Constructs a solid cell object with the given color.
+     *  @param cellColor   the color for this cell
+     */
+    public SolidCell(Color cellColor)
+    {
+        super(cellColor);     // invoke superclass constructor
+    }
+
+  // redefined method from GridObject
+
+    /** Acts for one step in the percolation simulation.
+     */
+    public void act()
+    {
+        Debug.println("Solid Cell " + location() + " not acting.");
+    }
+
+}
+</pre></blockquote>
+          </li>
+          <br/>
+          <li><strong>Compile your new class.  If it compiles, you should be
+              able to compile and run the program.</strong>
+          </li>
+      </ol>
+
+      <h5>Analysis Questions: (write these up to turn in at the end of
+          lab)</h5>
+      <ol>
+          <li>Which superclass constructor is being invoked by the two
+          calls to <code>super</code> in the <code>SolidCell</code>
+          constructors?
+          </li>
+          <li>Where does the <code>location</code>
+          method being called in <code>act</code> come from?  Who is the
+          "Hey, you!" object receiving that method?
+          (Hint: look at the class documentation  for the
+              <a
+                  href="http://www.cs.kzoo.edu/GridPkg/GridPkgClassDocumentation/edu/kzoo/grid/ColorBlock.html">ColorBlock</a>
+          and
+              <a
+                  href="http://www.cs.kzoo.edu/GridPkg/GridPkgClassDocumentation/edu/kzoo/grid/GridObject.html">GridObject</a>
+          classes.)</li>
+        </ol>
+
+      </td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<h2>Becoming Familiar with the Program and User Interface</h2>
+<p>In the next exercise you will run the Percolation program and become
+familiar with the functionality of its graphical user interface.
+</p>
+
+<table width="90%" align="center" border="1">
+  <tr> 
+    <td> <h4><i>Exercise 3 &#8212; Becoming familiar with the program:</i></h4>
+        <blockquote>
+        <p>
+        Compile and run your skeletal percolation program.  You
+        can't run a percolation simulation yet, because you don't have
+        any percolating substances, but you should be able to create a
+        representation of a porous material.
+        </p>
+        <h5>Buttons:</h5>
+        <ul>
+            <li>Create a new grid using the appropriate button in the
+            graphical user interface.</li>
+            <li>Using the Manually Populate Grid button, add a few solid
+            cells to
+            your grid.
+            <ul>
+                <li>How many types are available to you in the Type
+                pull-down menu?</li>
+                <li>What happens when you click on an empty cell in the
+                grid?  What happens when you click on a grid location
+                with a SolidCell in it?</li>
+                <li>What happens when you click the Done button?</li>
+                <li>What happens if you click on Manually Populate Grid
+                when the grid already has some items in it?</li>
+            </ul>
+            </li>
+            <li>Click on the Step Once button, the Step N Times button,
+            and the Run button.  What happens?  Why?
+            <!--
+            When you click on the Step Once button, the graphical user
+            interface calls the <code>step</code> method in the
+            program's controller object.  Look at the <code>step</code>
+            method in the
+            <code>SlowPercolationController</code> class to see what the
+            controller does each in each step.  How does this fit in
+            with the code in your <code>SolidCell</code> class?
+            What do you expect will be different in the percolating
+            classes?
+            -->
+            </li>
+            <li>What happens when you click on the Automatically
+            Populate Grid button?  What is the effect of choosing a
+            density of 0%, 5%, 30%, 75%, or 100%?
+            </li>
+            <li>What happens when you click on Manually Populate Grid after
+            having automatically populated the grid? Why might this be
+            useful?
+            </li>
+        </ul>
+        <h5>File Menu:</h5>
+        <ul>
+            <li>Create a new grid using the File menu, not the New Grid
+            button.  Edit the grid, again using the File menu, and add
+            some solid cells to your grid.  Is the behavior any
+            different from using the buttons?
+            </li>
+            <li>Open the grid file called
+            <code>porousMaterialA.dat</code>.  (It should be in the
+            same folder as your BlueJ project, along with several
+            other data files and a folder called <code>images</code>.)
+            </li>
+	    <li>Edit the grid you opened to place a solid cell that
+	    cuts off one of the pathways from the top of the grid to the
+            bottom.</li>
+            <li>Save your new, edited grid as
+            <code>porousMaterialA2.dat</code>.</li>
+            <li>Test that you saved the file correctly by creating a new
+            grid (to overwrite the current one) and then opening your
+            saved file.
+            </li>
+            <li>Open the other data files provided to you to see how
+            they differ.
+            </li>
+        </ul>
+        <p>
+        You do not need to formally write up and turn in the answers to
+        the questions in this exercise, but if there are any you do not
+        understand or to which you are unsure of the answers, you should
+        be sure to follow up with the lab instructor or teaching
+        assistant.
+    </blockquote>
+  </td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<h2>Using Images</h2>
+<p>You have been representing your solid cells using a solid block of
+color, which was possible because you extended the
+<code>ColorBlock</code> class.  Grid package applications also provide a
+relatively easy way to associate a picture with a class, so that every
+object of the class in a grid is represented by the same picture.
+</p>
+
+<table width="90%" align="center" border="1">
+  <tr> 
+    <td> <h4><i>Exercise 4 &#8212; Using images to represent solid cells:</i></h4>
+        <ul>
+            <li>Edit the <code>PercolationApp</code> class and find the
+            commented-out code that associates the
+            <code>SolidCell</code> class with <code>marb1.gif</code>
+            (the statement spans across two lines).  Uncomment these
+            lines, then run the program creating solid cells in a grid.
+            </li>
+            <li>If you want, you can change the code to use any of the
+            files in the <code>images</code> folder in the Percolation
+            project for your solid cells.
+            </li>
+        </ul>
+  </td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<h2>Debugging</h2>
+<p>Often when you write a program, it is useful to keep track of some
+information as you go.  You can do this by printing that information.
+On the other hand, once you know you have your program working you will
+not want extraneous messages coming out when you run it.  The Grid
+Package <code>Debug</code> class provides a handy way to put print
+statements in your code that will only print out only when you want them
+to, usually during debugging.
+</p>
+
+<table width="90%" align="center" border="1">
+  <tr> 
+    <td> <h4><i>Exercise 5 &#8212; Debugging:</i></h4>
+        <ul>
+            <li>Without running your program, write down the program behavior
+            you expect to see if you create a grid with some solid cells
+            in it and then click on the Step Once button.
+            This button should result in the <code>act</code> method being
+            called for every object in the grid.  The <code>act</code>
+            method in <code>GridObject</code> does not do anything, but
+            you overrode that behavior by writing your own
+            <code>act</code> method in <code>SolidCell</code>.
+            </li>
+            <li>Run your program, creating (or reading in) a grid with
+            solid cells in it.  Click on the Step Once button.
+            Write down the actual behavior you see for the Analysis part
+            of the Exercise.
+            </li>
+            <li>Edit the <code>PercolationApp</code> class and find the
+            commented-out code that turns debugging on.  Uncomment it
+            and run your program.  Do you see different behavior?
+            </li>
+            <li>Before running the program again, click in the BlueJ
+            terminal window and then choose <code>Clear</code> from the
+            <code>Options</code> menu.
+            </li>
+        </ul>
+      <h5>Analysis: (write this up to turn in at the end of
+          lab)</h5>
+      <ul>
+          <li>Document the expected and actual behavior of your program
+          before you turned debugging on.
+          If the expected and
+          actual behavior are different, provide an explanation.
+          </li>
+      </ul>
+  </td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<h2>Vertical Percolation</h2>
+<p>Now it's time to create a class to represent a substance that will
+percolate through your porous material.  We will start by simulating
+"vertical percolation," where the percolating substance percolates straight
+down but does not seep sideways nor up.  This type of percolation might
+describe the behavior of a small solid, such as grains of sand,
+percolating through a material, although it would not provide a good
+simulation of a liquid or gas.
+</p>
+
+<table width="90%" align="center" border="1">
+  <tr> 
+    <td> <h4><i>Exercise 6 &#8212; Creating a skeletal vertical
+                percolation class:</i></h4>
+        <ul>
+          <li>
+          Create a new class called <code>VerticalPercolator</code>.
+          Eventually this will represent a substance that percolates
+          down through your porous material, although to start with we
+          will create a class that doesn't do anything yet.  That means
+          that to begin with it will be very similar to the
+          <code>SolidCell</code> class.
+          (You may want to copy and paste some code segments from
+          <code>SolidCell</code> into <code>VerticalPercolator</code> as
+          you go.)
+          This class, though,
+          should inherit directly from the <code>GridObject</code> class
+          (not from the <code>ColorBlock</code> class).
+          <blockquote>
+<pre>
+    java.lang.object
+      |
+      +--edu.kzoo.grid.GridObject
+            |
+            +--VerticalPercolator</pre>
+          </blockquote>
+          <ul>
+          <li>Like <code>SolidCell</code>,
+          your new <code>VerticalPercolator</code>
+          class does not need any new instance variables, since it will
+          inherit all the state it needs from <code>GridObject</code>.
+          </li>
+          <li><code>VerticalPercolator</code> only needs one
+          constructor, since we are not associating colors with
+          percolator objects.  The single constructor should take no
+          parameters, and invoke the superclass constructor, also with
+          no parameters.
+          </li>
+          <li>
+          Finally, your <code>VerticalPercolator</code> should redefine the
+          <code>act</code> method from <code>GridObject</code>.  This
+          will eventually be a significant method, but for now just have
+          it put out a debugging message, similar to the
+          <code>act</code> method in <code>SolidCell</code> but saying
+          that the method is about to act:
+          <pre>
+     Debug.println("Percolator " + location() + " about to act...");</pre>
+          </li>
+          <li>Double-check what classes you need to import. Read through
+          the classes imported by <code>SolidCell</code> class and
+          decide if any of those are needed in
+          <code>VerticalPercolator</code> and what new classes might
+          need to be imported.
+          </li>
+          </ul>
+    <br/><br/></li>
+    <li>Run your program, creating (or reading in) a grid with
+    solid cells in it.
+    Can you create vertical percolation objects in the grid?
+    (Are there any other types in the pull-down menu to the left
+    of the editing grid?)
+    </li>
+    <li>In the <code>PercolationApp</code> class, uncomment the 
+    line that would add "VerticalPercolator" to the array of
+    <code>editableTypes</code>.
+    <!--
+    (We haven't covered arrays, but
+    they act very much like ArrayLists.  One difference is that
+    -->
+    (Notice that one difference between arrays and ArrayLists is that
+    arrays provide this short-hand method that you see for adding
+    elements to the array.)
+    </li>
+    <li>Run your program, creating (or reading in) a grid with
+    solid cells and adding vertical percolation objects to it.
+    What do vertical percolation objects look like?
+    </li>
+    <li>In the <code>PercolationApp</code> class, uncomment the 
+    two lines that will associate the
+    <code>VerticalPercolation</code> class with an image.  (You
+    can switch to a different image if you like.)
+    </li>
+    <li>Run your program again, creating (or reading in) a grid
+    with solid cells and vertical percolation objects in it.
+    Click on the Step Once button.  Do you see different
+    behavior (or at least different debugging output) for solid
+    cells and vertical percolators?
+    <em>Is the behavior what you expected to see?</em>
+    </li>
+    <li>Between each run of your program, don't forget to
+    click in the BlueJ
+    terminal window and then choose <code>Clear</code> from the
+    <code>Options</code> menu.
+    </li>
+    <li>Save a grid with some solid cells and some
+    vertical percolation objects in it to a file.  Read in the
+    file.  What was saved to the file?
+    <em>Is the behavior what you expected to see?</em>
+    </li>
+
+    </ul>
+  </td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<table width="90%" align="center" border="1">
+  <tr> 
+    <td> <h4><i>Exercise 7 &#8212; Next steps
+                toward percolation:</i></h4>
+        <ul>
+
+          <li>
+          Next we're ready to think about what the <code>act</code>
+          method in the  <code>VerticalPercolator</code> class should do.
+          Each cell just considers where it should percolate to; the
+          global percolation effect is produced by each cell percolating
+          one unit's worth in that time step.
+          We can describe the logic for each cell of percolating
+          substance in
+          general terms:
+          <blockquote><i>
+                  Determine what location(s) it should percolate
+                  to.<br/>
+                  Percolate there.
+          </i></blockquote>
+          We can write this right into the <code>act</code> method as
+          comments and temporary debugging messages:
+          <pre>
+     public void act()
+     {
+         Debug.println("Percolator " + location() + " about to act...");
+
+         // Figure out where to percolate or spread to.
+         Debug.println("Should figure out where to percolate to...");
+
+         // Percolate there.
+         Debug.println("Should now percolate to somewhere...");
+     }</pre>
+          </li>
+          <li>Each of these two steps is a well-defined unit, so we will
+          write a separate helper method for each.  The first method,
+          <code>getPercolationLocation</code>, does not need any
+          parameters and will return a <code>Location</code>.  Write this
+          method, returning any arbitrary location for now
+          (for example, location (0, 0)).
+          <em>(How do you create (construct) a location object for a given row,
+          column combination?  Look at the class documentation for
+          the
+          <a
+              href="http://www.cs.kzoo.edu/GridPkg/GridPkgClassDocumentation/edu/kzoo/grid/Location.html">Location</a>
+              class to find out.)</em>
+          Then replace the middle
+	  debugging statement in <code>act</code> with a call to
+          your new method, storing the returned location in a variable.
+          Modify the final debugging statement in <code>act</code> to
+          replace "somewhere" with the actual location the method will
+          percolate to.
+          What do you expect the behavior of this simple
+          version of the program to be?
+          Compile and run your program to test the modified <code>act</code>
+          method and your new helper method.
+	  Edit your program as necessary so that your program does
+	  what you expect it to.
+          </li>
+          <li>Write a second method, <code>percolateTo</code>.  Does
+          this method need any parameters?  Should it return anything?
+          For now, leave the body of the method empty except
+          to move the final debugging statement in <code>act</code> to
+          it.
+          What do you expect the behavior of your program to be after
+          making this modification?
+          Compile and test your new method.
+          Edit it as necessary so that your program does
+          what you expect it to.
+          </li>
+        </ul>
+  </td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<table width="90%" align="center" border="1">
+  <tr> 
+    <td> <h4><i>Exercise 8 &#8212; Fully implemented
+                vertical percolation:</i></h4>
+        <ul>
+          <li>
+          Update the <code>getPercolationLocation</code> method to
+          return the correct location.  First determine the row and
+          column of the substance's current location, and then use those
+          values to return a new location that represents the location
+          below the current location.  Run your program and make sure
+          that your debugging messages show that you've calculated the
+          right location.
+          </li>
+          <li>
+          Update the <code>percolateTo</code> method.  The first thing
+          it needs to do is to see whether the location passed to it as
+          a parameter is a valid location (inside the grid, not outside)
+          and is empty.  Read the class documentation for the
+              <a
+                  href="http://www.cs.kzoo.edu/GridPkg/GridPkgClassDocumentation/edu/kzoo/grid/Grid.html">Grid</a>
+          class to find out what methods would be useful for this.
+          Pay particular attention to the method details, including
+          the description of the return values.  You will find that
+          one of the two obvious method choices can be used to check
+          for both validity and emptyness.  If the location you are
+          trying to percolate to is invalid or not empty, just return
+          without doing anything.  If it is OK, then percolate there by
+          adding a new <code>VerticalPercolator</code> object to the
+          grid in the new location.  The last thing you need to do is to
+          tell the current controller about the new object you created.
+          You can do this with code like the following (assuming that
+          <code>dupl</code> is a variable representing the new object):
+          <pre>
+     PercolationController.getController().notePercolationTo(dupl);</pre>
+          Thus, the skeleton
+          for this method, with comments, debugging messages,
+          and the statement to notify the controller of the new object,
+          might look like:
+          <pre>
+     Debug.println("Should now percolate to location " + newLoc);
+
+     // If newLoc is not in the grid or is not empty, do nothing.
+
+     // If newLoc is a valid, empty location, spread to that location.
+     Debug.println("Should percolate to location " + newLoc +
+                   " successfully.");
+
+     // Tell the controller about the new percolating substance object.
+     PercolationController.getController().notePercolationTo(dupl);</pre>
+          </li>
+          <li>Before you run your program, think clearly about what you
+          expect the results to be.  Then run the program and compare
+          your actual results to your expected results.  Edit your
+          program as necessary so that your program does what you expect
+          it to.  Test your program with a variety of different grids,
+          strategically 
+          placing your solid cells and starting vertical percolation
+          substances to fully test your program.
+          </li>
+        </ul>
+  </td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<table width="90%" align="center" border="1">
+  <tr> 
+    <td> <h4><i>Exercise 9 &#8212; Save and Print Your Modifications  
+                </i></h4>
+        <ul>
+
+          <li>
+	  Update the class documentation for <code>SolidCell</code> and
+	  <code>VerticalPercolator</code> to accurately describe the
+	  purpose and behavior of the class from a user's perspective.
+	  Focus on what the program does, rather then how it does it.
+	  Include your name and the current date as well as the names of
+	  anyone from whom you received help.  Update the documentation
+	  before each method, including @return and @parameter
+          descriptions.</li>
+	  <li> When you are done and your program works correctly, print
+          out the source code for the <code>SolidCell</code> and
+          <code>VerticalPercolator</code> to turn in.</li>
+          <li>Also turn in your answers to the Analysis Questions in
+          this lab.</li>
+	  <li>This lab must be finished before the next class
+          period.</li>
+	</ul>
+    </td>
+  </tr>
+</table>
+
+<hr>
+<hr>
+
+<div id=footer> Copyright Alyce Faulstich Brady, 2009. </div>
+<br>
+<p>&nbsp;</p>
+</body>
+</html>

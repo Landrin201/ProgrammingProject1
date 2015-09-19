@@ -1,0 +1,139 @@
+/*
+ * Author: Marc Kuniansky
+ * Date Created: June 18, 2015
+ * Modifications:
+ * 			Date			Author			Reason
+ * 		August 15 2015, Marc Kuniansky, Implemented basic code for the GUI. Thanks to 
+ * 										https://www3.ntu.edu.sg/home/ehchua/programming/java/J4a_GUI.html
+ * 										for the easy to follow tutorial on how to implement a GUI.
+ * 										The code written today did not serve a function, but everything showed up.
+ * 		August 20 2015, Marc Kuniansky, Implemented the purpose for the code. Added the Button Press Listener
+ * 										nested class, which allows the user to tell the program they have 
+ * 										selected which optional files they want.
+ * 		August 28 2015, Marc Kuniansky, Changed the layout of the pane from Flow to Box. 
+ */
+ 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+/**
+ * @author Marc
+ *
+ */
+public class FileSelectorGUI extends JFrame implements ActionListener, WindowListener
+{ //Begin class
+	//Instance variables
+	private Label lbl;
+	private Label lbl2;
+	private Label lbl3;
+	private Label lbl4;
+	private Label lbl5;
+	private Button button;
+	
+	//Checkboxes
+	private Checkbox box1;
+	private Checkbox box2;
+	
+	public Initializer initializer;
+	
+	
+	//Constructor to set up the GUI components
+	/**
+	 * 
+	 */
+	public FileSelectorGUI(Initializer initialize)
+	{ //Begin constructor
+		initializer = initialize; //The initializer is important here, as it is called when the button is pressed.
+		//Everything here is being used to determine which optional files the user wants included in Application.ini.
+		
+		setTitle("Test"); //Set the name of the frame when displayed
+		setSize(500, 250); //Set the size of the frame
+		
+		//Set the layout of the frame. I chose Box layout.
+		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+		
+		/* Add objects into the pane */
+		
+		//Construct and add the labels which instruct the user on what to do
+		lbl = new Label("Please select the files you wish to include in application.ini.", Label.CENTER); //Set the text and location for the label
+		this.add(lbl); //Add the label to the frame
+		lbl2 = new Label("If you are installing Ramp, please select all files for ramp.", Label.CENTER);
+		this.add(lbl2);
+		lbl3 = new Label("If you are installing Smart, please select all files for Smart.", Label.CENTER);
+		this.add(lbl3);
+		lbl4 = new Label("If you are installing both Ramp and Smart, please select all files below.", Label.CENTER);
+		this.add(lbl4);
+		lbl5 = new Label("Close this window to cancel.", Label.CENTER);
+		this.add(lbl5);
+		
+		//Construct and add the checkboxes
+		box1 = new Checkbox("Ramp Defaults", false);
+		this.add(box1);
+		box2 = new Checkbox("Ramp Demo", false);
+		this.add(box2);
+		
+		//Construct and add a button
+		button = new Button("Finish"); //Construct a button
+		this.add(button); //Add the button to the frame
+		
+		//Add listeners to listen for action events
+		button.addActionListener(new BtnPressListener()); //Listens for a button press
+		addWindowListener(this); //Listens for a closing window
+		
+		setVisible(true); //Make the frame visible
+	} //End constructor
+	
+	//Other methods
+	@Override
+	public void actionPerformed(ActionEvent evt)
+	{ //Begin actionPerformed
+		//Empty inherited method, implemented in a nested class below
+	} //End actionPerformed
+	
+	
+	/* Window Event Handlers */
+	
+	//Allow window to be closed by clicking the close button
+	@Override
+	public void windowClosing(WindowEvent e)
+	{
+		System.exit(0); //Terminate the program
+	}
+	
+	//Methods which are not used, but need to be implemented because this
+	//class implements an interface
+	@Override
+	public void windowOpened(WindowEvent e){ }
+	@Override
+	public void windowClosed(WindowEvent e){ }
+	@Override
+	public void windowIconified(WindowEvent e){ }
+	@Override
+	public void windowDeiconified(WindowEvent e){ }
+	@Override
+	public void windowActivated(WindowEvent e){ }
+	@Override
+	public void windowDeactivated(WindowEvent e){ }
+	
+	/**
+	 * BtnPressListener is a nested action listener which listens for 
+	 * a button press
+	 * @author Marc Kuniansky
+	 */
+	private class BtnPressListener implements ActionListener
+	{ //Begin nested class
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			if(box1.getState()==true)
+				initializer.IncludeFileTwo();
+			if(box2.getState()==true)
+				initializer.IncludeFileThree();
+			initializer.execute();
+			System.exit(0);
+			//Some code will go here to check which checkboxes are marked true.
+		}
+	} //End nested class
+	
+} //End class

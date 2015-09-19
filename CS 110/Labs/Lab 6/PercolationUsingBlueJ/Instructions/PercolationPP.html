@@ -1,0 +1,294 @@
+<html>
+<head>
+<title>Percolation Programming Project</title>
+   
+   <link href="mailto:abrady@kzoo.edu">
+   <link rel="STYLESHEET" type="text/css" href="styles.css"></head>
+<body bgcolor="#FFFFFF">
+<DIV ID=siteTitle>
+<H1>
+Percolation Programming Project</H1> <h3>Experimenting With Percolation</h3>
+</DIV>
+
+<DIV ID=author>
+  <a href="http://max.cs.kzoo.edu/~nsprague/">Nathan Sprague</a><br>
+  <a href="http://www.kzoo.edu/">Kalamazoo College</a>
+</DIV>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<p>
+<a name="start"></a>
+</p>
+
+<h2>Motivation</h2>
+
+<p> Our graphical percolation program is great for visualizing the
+percolation process.  However in its current form it is not ideal for
+running experiments.  Imagine we want to answer the following question:
+<blockquote>
+"What is the probability that a gas will percolate from the top row
+to the bottom row in a 100x100 grid, given that each cell has a 30% chance
+of being blocked?"  
+</blockquote>
+Your first instinct might be to start the program, create an
+appropriate grid, and click run. What would you be able to conclude
+from the result? Not much.  The fact that the material reached the
+bottom (or didn't) tells us very little about what will happen the
+next time we run the experiment.  In order to obtain a meaningful
+answer, we need to run the experiment many times and average the
+results.  If we run this experiment 1000 times, and the material
+percolates 234 times, we can be confident that the probability of
+percolation for these conditions is somewhere around 23%.  Clicking
+the run button 1000 times is not an attractive option.
+
+Running these experiments by hand will be even less attractive if we
+want to systematically explore the effects of changing the probability
+that cells are blocked.  Generating a figure like this: 
+
+<br>
+<br>
+<img src="sample_plot.png"> 
+<br>
+<br>
+
+involves running 100 experiments for 21 different conditions.  That's
+2100 clicks of the run button.  If we want to run 1000 experiments for
+each condition we end up with 21,000 clicks.
+<p>
+The purpose of this project is to modify the Percolation program to
+automate the process of obtaining results like those described above,
+and then to use the updated program to obtain some experimental
+results.
+
+<h2><a name="start"></a>Updating the GUI</h2>
+
+Up until now, we have placed the initial percolators by hand using the
+"Manually Populate Grid" button.  For the purposes of experimentation
+we want this process to be automated.  At the beginning of each
+experiment the entire grid should be randomly populated with solid
+cells, and each empty cell in the top row should be populated with the
+appropriate type of percolator.  There is code in place to handle this. 
+<p>
+  
+The first step is to uncomment several lines
+in <code>PercolationApp</code>.  Somewhere around line 72 you should
+see the following statement:
+<pre>
+        Class[] percTypes = {
+//                              VerticalPercolator.class,
+//                              GravitationalPercolator.class,
+//                              AllDirectionPercolator.class
+                            };
+</pre>
+Remove the comments and, if necessary, update the names to match the
+names you used for your percolator classes. The <code>percTypes</code>
+array will be used by the program to generate a pull-down menu of
+percolator types.  Compile and run your updated program.  Experiment
+with selecting a percolator type and clicking on the "Automatically
+Populate Grid" button.  You should find that the top row is
+automatically populated with the appropriate percolator type.  You
+will also observe that two additional buttons have been added to the
+GUI: "Run N Times" and "Run Density Experiments".  Try clicking these
+buttons.  You will be prompted for the appropriate experimental
+parameters, but the experiments will not run.  The next step in the
+project is to write the code that executes the requested
+experiments and prints the results.
+
+<h2><a name="start"></a>Implementing Experiments</h2>
+
+The "Run N Times" and "Run Density Experiments" buttons each result in
+a call to corresponding methods in
+the <code>PercolationController</code> class, <code>runNTimes</code>
+and <code>runExperiments</code>.  
+
+<h4><a name="start"></a>runNTimes</h4> 
+The basic logic for the runNTimes method should be as follows:
+<pre>
+repeat N times:
+   Randomly fill in the grid using the appropriate density.
+   Fill in the top row of the grid with percolators.
+   Run the percolation simulation (without involving the GUI).
+   If any material percolated to the bottom, increment a counter. 
+
+After all N runs have completed, use System.out.println to print a summary
+of the results including: 
+    The size of the grid.
+    The density.
+    The number of runs.
+    The number of runs that resulted in percolation.
+</pre>
+
+There are several existing methods in
+the <code>PercolationController</code> class that will be useful for
+implementing <code>runNTimes</code>.  These
+include <code>randomlyFillGrid</code>, <code>fillTopRow</code>, <code>invisibleRun</code>
+and <code>percolatedToBottom</code>. Read each of these methods, along
+with their comments, to make sure that you understand what they do and
+how to use them.
+<p>
+Notice that we want to avoid updating the GUI while these experiments
+are running.  While it might be entertaining to watch thousands of
+percolation experiments, (it might make a good screensaver) the
+experiments can be run <em>much</em> more quickly if the GUI is not
+involved.  This is one of the motivations for maintaining a separation
+between the code that handles the GUI and the code that handles the
+simulation logic.
+<p>
+Implement and test the <code>runNTimes</code> method. 
+
+<h4><a name="start"></a>runExperiments</h4> 
+
+Once you have completed the <code>runNTimes</code> method,
+implementing <code>runExperiments</code> should be straightforward.  It
+will consist of a loop that repeatedly calls
+ <code>runNTimes</code> with an appropriate series of density
+ values. Implement and test the <code>runExperiments</code> method.
+
+
+<h2>Improving Efficiency</h2> 
+
+So far in this class we haven't worried very much about writing
+efficient code. Computers can execute many millions of instructions
+per second, so a slightly more efficient implementation of code that
+moves a fish or fills a grid row are unlikely to make a noticeable
+difference to the user.  The situation here is different.  The code
+you wrote above allows you to easily run tens of thousands
+of percolation experiments with just a few mouse clicks.  Even if each
+of those experiments only takes a fraction of a second, the entire
+process could take minutes or hours. For example, assume that for a
+given grid size it takes .1 seconds to complete a single percolation
+experiment.  If we want to complete 1000 runs at 20 different
+densities, the total time will be: 1000 * 20 = 20,000 runs * .1
+seconds/run = 2000 seconds = 33 minutes.
+
+<h4><a name="start"></a>Testing SlowPercolationController</h4> 
+
+The next step in the project is to run some experiments to get a feel
+for the performance of the current version of the code.  Fill in the
+following table by using a stopwatch to time the program. Each entry
+in the table should contain the time, in seconds, that it took the
+program to complete under the given conditions.  Use
+the <code>AllDirectionPercolator</code> for these experiments.  Save
+these results to be submitted along with your finished programming
+project.
+<p>
+
+<table border="1">
+<tr><th>&nbsp</th><th>25x25 grid</th> <th>50x50 grid</th> <th>100x100 grid</th> </tr>
+<tr><th>50 runs</th><td>&nbsp</td> <td>&nbsp</td> <td>&nbsp</td> </tr>
+<tr><th>100 runs</th><td>&nbsp</td> <td>&nbsp</td> <td>&nbsp</td> </tr>
+<tr><th>200 runs</th><td>&nbsp</td> <td>&nbsp</td> <td>&nbsp</td> </tr>
+</table>
+
+<p>
+Is it possible to do better than this?  Take a few minutes to read
+over the <code>step</code> method of
+the <code>SlowPercolationController</code>.  This method works by
+iterating through the entire grid, placing every object it finds into
+an ArrayList, and calling <code>act</code> on each of those objects.
+This is inefficient in at least two different ways.  First it is
+possible that the grid is mostly empty.  In that case the code may
+loop through many hundreds of grid positions just to find a small
+number of objects. Second, it is likely that most of the objects being
+asked to act will not do anything.  The act method will have no effect
+on solid material or on percolating material that has no place to go. 
+
+<p>
+Take another look at the results of your timing experiments and write answers to the following questions:
+<ul>
+  <li>Does doubling the number of runs more or less double the amount
+  of time taken?
+<li>Does doubling with width and height of the grid more or less double the
+amount of time taken?
+<li>Are these the results you would have expected?  
+<li>Why or why not? 
+</ul>
+
+<h4><a name="start"></a>Implementing ListPercolationController</h4> 
+A more efficient approach is to explicitly keep track of the set of
+items that needs to be processed.  Any individual item in the
+grid needs to have its <code>act</code> method called at most once.
+Once an object has percolated to the appropriate neighbors, its work is
+done and it no longer needs to be considered.  
+<p>
+The source code provided to you includes the skeleton of
+a <code>ListPercolationController</code> class that will take
+advantage of this.  The basic idea is to maintain two lists of grid
+objects.  One list (<code>processThisStep</code>) will represent the
+set of items that needs to be processed in the current step, and the
+other (<code>processNextStep</code>) will contain the list of objects
+that needs to be processed in the next step.  Every time a new object
+is added to the grid as a result of percolation, it is also added to
+the list of items that will be processed on the next step.  
+The process completes whenever there is a step that adds no items to the 
+ <code>processNextStep</code> list.
+<p>
+Complete and test the <code>ListPercolationController</code> by
+following the comments in the method stubs.  You can test the
+controller by selecting it in the pull-down menu of the GUI.  Once you
+are sure that your code is working correctly, re-run the timing
+experiments above using the new controller.  Record the results to be
+submitted with the completed project. Type answers to the following questions
+for your new set of results:
+<ul>
+  <li>Does doubling the number of runs more or less double the amount
+  of time taken?
+<li>Does doubling with width and height of the grid more or less double the
+amount of time taken?
+<li>Are these the results you would have expected?  
+<li>Why or why not? 
+</ul>
+
+
+
+<h2>Estimating Percolation Thresholds</h2>
+
+For large grids, percolation systems like the one we are looking at
+experience a threshold effect; if we gradually increase the percentage
+of blocked grid squares, at some point the probability that the
+material will percolate drops from 100% to 0% almost immediately.  The
+goal of this exercise is to estimate where that drop-off occurs. Pick
+either the gravity percolator or the all directions percolator and
+estimate the value of the threshold.  The threshold will be the place
+where there is a 50/50 chance that the material will percolate.  For
+these experiments you should use grids of size at least 100x100, with
+at least 1000 runs per density.  You will get better results with
+larger grids.
+
+<p>
+You can start out by running experiments across a wide range of
+densities, say from 0%-100% in 10% intervals.  Those results should
+allow you to narrow your experiments down to a smaller region where
+you can run experiments using smaller intervals.  Since we have
+implemented our probabilities as integer values, you won't be able to
+narrow down your estimate much beyond the closest percentage point.
+That's OK.  Type up a paragraph describing your results and presenting
+your estimate.  You should also include a copy of the raw data that
+you used to reach your conclusion.  You will submit these results
+along with your completed project.
+<p>
+If you are interested, there are many other experiments you could run
+using this system: how exactly does the size of the grid change the
+sharpness of the threshold?  Does the shape of the grid matter?  In
+other words, would the probability of percolation be the same for a
+100x100 grid as for a 20x500 grid (both have 10,000 entries)?
+
+
+<h2>Handing In</h2> 
+
+Hand in the answers you wrote up to the questions above, along with
+your completed <code>PercolationController</code>
+and <code>ListPercolationController</code> classes.
+
+
+<hr>
+<hr>
+
+<div id=footer> Copyright Alyce Faulstich Brady, 2009. </div>
+<br>
+<p>&nbsp;</p>
+</body>
+</html>

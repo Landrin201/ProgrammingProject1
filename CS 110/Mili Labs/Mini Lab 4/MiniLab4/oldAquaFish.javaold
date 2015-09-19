@@ -1,0 +1,310 @@
+
+import java.awt.Color;
+import java.util.Random;
+
+
+/**
+ * Aquarium Lab Series: <br>
+ *      The AquaFish class defines a fish in an aquarium. 
+ * <br> <br>
+ * Created: <br>
+ *   10 July 2002,  Alyce Brady<br>
+ * <br>
+ * Modifications: <br>
+ *   22 March 2008, Alyce Brady, Simplified by removing references to
+ *                               AquaPoint and Direction classes and moving
+ *                               calculation of valid random starting locations
+ *                               to the Aquarium class. <br>
+ *   23 March 2008, Alyce Brady, Modified to put some of the more complex
+ *                               methods in the BaseFish class, to make
+ *                               the AquaFish class easier to read. <br>
+ *   (date)  (your name)  Modified to .... <br>
+ * 
+ * @author (your name) (with assistance from)
+ * @version 23 March 2008
+ * @see Aquarium
+ **/
+public class AquaFish
+{
+    // STATE
+
+    // Named constants that specify how far a fish may move in one timestep
+    private static final int MIN_DISTANCE = 10;
+    private static final int MAX_DISTANCE = 70;
+    
+    // Class Variables: Shared among ALL fish
+    private static int nextAvailableID = 1;   // next avail unique identifier
+    private static Random generator = new Random(); // random number generator
+
+    // Instance Variables: Encapsulated data for EACH fish
+    private Aquarium theAquarium;    // aquarium in which this fish is swimming
+    private int myID;                // unique identifier for this fish
+    private Color myColor;           // fish's color
+    private int myCenterX;           // x-coordinate of fish's centerpoint
+    private int myCenterY;           // y-coordinate of fish's centerpoint
+    private boolean amIFacingRight;  // whether fish is facing right or left
+    private int myLength, myHeight;  // define size of fish
+    private int halfLength, halfHeight;  // useful for knowing perimeter of
+                                         //   fish
+
+    // OPERATIONS (constructor and methods)
+
+    /**
+     *  The AquaFish constructor sets properties of the AquaFish.
+     *  Precondition: the aquarium must be big enough to accomodate
+     *  the biggest fish (currently 75 pixels long and 30 pixels high)
+     *  plus 10 pixels of padding in all four directions.
+     *  @param    aqua   the Aquarium in which to place the fish
+     **/
+    public AquaFish(Aquarium aqua)
+    {
+        // Place fish in aquarium and initialize ID and color.
+        theAquarium = aqua;
+        myID = nextAvailableID++;
+        myColor = Color.WHITE;
+
+        // Initialize size, position, and direction.
+        initSize();
+        initPos();
+    }
+
+    /**
+     *  Initialize fish size:
+     *  This helper function determines the height and length of the fish.
+     *  Fish are evenly distributed among 4 different sizes based on their 
+     *  ID numbers.
+     **/
+    private void initSize()
+    {
+        // Possible fish lengths are: ?, ?, ?, and ?.
+        // The height of a fish is always 40% of its length.
+        myLength = 30 + (myID % 4) * 15;
+        myHeight = (int)Math.round(0.4*myLength);
+
+        // The halfLength and halfHeight instance variables are useful to
+        // determine the left, right, top, and bottom edges of this fish,
+        // starting from the centerpoint indicated by (myCenterX, myCenterY).
+        halfLength = (int)Math.round(myLength/2.0);
+        halfHeight = (int)Math.round(myHeight/2.0);
+    }
+
+    /**
+     *  Initialize fish position and direction.
+     *  This helper function assigns coordinates to a fish such that the
+     *  fish is placed within the bounds of the Aquarium.
+     *  Precondition: the aquarium must be big enough to accomodate
+     *  the biggest fish (currently 75 pixels long and 30 pixels high)
+     *  plus 10 pixels of padding in all four directions.
+     **/
+    private void initPos()
+    {
+        // Initialize my position and direction.
+        myCenterX += theAquarium.randomCenterX(myLength);
+        myCenterY += theAquarium.randomCenterY(myHeight);
+
+        amIFacingRight = true;
+    }
+
+    /**
+     *  Get the unique identifier for this fish.
+     *  @returns    the ID of the fish
+     **/
+    public int id()
+    {
+        return myID;
+    }
+
+    /** Get fish's color.
+     *  @return        the color of this fish
+     **/
+    public Color color()
+    {
+        return myColor;
+    }
+
+    /**
+     *  Get the fish's x coordinate in the aquarium.
+     *  @returns    the x coordinate in the aquarium of the fish's centerpoint
+     **/
+    public int xCoord()
+    {
+        return myCenterX;
+    }
+
+    /**
+     *  Get the fish's y coordinate in the aquarium.
+     *  @returns    the y coordinate in the aquarium of the fish's centerpoint
+     **/
+    public int yCoord()
+    {
+        return myCenterY;
+    }
+
+    /** Get the length of the fish.
+     *  @returns    fish length
+     **/
+    public int length()
+    {
+        return myLength;
+    }
+
+    /** Get the height of the fish.
+     *  @returns    fish height
+     **/
+    public int height()
+    {
+        return myHeight;
+    }
+
+    /**
+     *  Determine whether the fish is facing right.
+     *  @returns    <code>true</code> if fish is facing right;
+     *              <code>false</code> otherwise
+     **/
+    public boolean facingRight()
+    {
+        return amIFacingRight;
+    }
+
+    /**
+     *  Determine whether the fish is facing left.
+     *  @returns    <code>true</code> if fish is facing left;
+     *              <code>false</code> otherwise
+     **/
+    public boolean facingLeft()
+    {
+        return ! facingRight();
+    }
+
+    /**
+     *  Compute how far the fish is from the wall in front of it.
+     *  @returns    distance from front of fish to facing wall
+     **/
+    public int distanceToWall()
+    {
+        int leftEdgeOfFish = myCenterX - (halfLength + 1);
+        int rightEdgeOfFish = myCenterX + (halfLength + 1);
+        if ( facingRight() )
+            return (theAquarium.width() - rightEdgeOfFish);
+        else
+            return leftEdgeOfFish;    // since left edge of aquarium is 0
+    }
+
+    /**
+     *  Determine whether the fish is at a wall.
+     *  A fish is considered at a wall if it cannot move forward; in other
+     *  words, if the distance from the fish to the wall it faces is less
+     *  than the minimum distance that a fish can move forward.
+     *  @returns    <code>true</code> if fish is at a wall;
+     *              <code>false</code> otherwise
+     **/
+    public boolean atWall()
+    {
+        return (distanceToWall() <= MIN_DISTANCE);
+    }
+
+    /**
+     *  Determine whether the fish is at the surface.
+     *  A fish is considered at the surface if it cannot ascend; in other
+     *  words, if the distance from the center of the fish to the surface
+     *  is less than the fish's height.
+     *  @returns    <code>true</code> if fish is at the surface;
+     *              <code>false</code> otherwise
+     **/
+    public boolean atSurface()
+    {
+        int topOfFish = myCenterY - (halfHeight + 1);
+        return (topOfFish <= myHeight);
+    }
+
+    /**
+     *  Determine whether the fish is at the bottom.
+     *  A fish is considered at the bottom if it cannot descend; in other
+     *  words, if the distance from the center of the fish to the bottom
+     *  is less than the fish's height.
+     *  @returns    <code>true</code> if fish is at the bottom;
+     *              <code>false</code> otherwise
+     **/
+    public boolean atBottom()
+    {
+        int bottomOfFish = myCenterY + (halfHeight + 1);
+        return (bottomOfFish >= (theAquarium.height() - myHeight));
+    }
+
+    /**
+     *  This function is provided primarily for debugging purposes.
+     *  @returns    a string representation of a fish
+     **/
+    public String toString()
+    {
+        String s = new String();
+        String dir = "R";
+        if ( facingLeft() )
+            dir = "L";
+        s = s + myID + " (" + myCenterX + ", " + myCenterY + ") " + dir + " ";
+        return s;
+    }
+
+    /**
+     *  Move forward horizontally by random increments, staying
+     *  within the aquarium.
+     **/
+    public void moveForward()
+    {
+        // First get random number in range [0, MAX_DISTANCE-MIN_DISTANCE],
+        // then shift to [MIN_DISTANCE, MAX_DISTANCE].  If moving that
+        // far would mean swimming out of the aquarium, only move to edge
+        // of aquarium.  Adjust fish's x coordinate by a positive or 
+        // negative amount, depending on whether fish is facing right or left.
+        int moveAmt = generator.nextInt(MAX_DISTANCE - MIN_DISTANCE + 1);
+        moveAmt += MIN_DISTANCE;
+        if ( moveAmt >= distanceToWall() )
+            moveAmt = distanceToWall();
+        if ( facingRight() )
+            moveRight(moveAmt);
+        else
+            moveLeft(moveAmt);
+    }
+
+    /**
+     *  Reverse direction.
+     **/
+    public void changeDir()
+    {
+        amIFacingRight = ! amIFacingRight;
+    }
+
+    /** Moves this fish <code>distance</code> units to the right.
+     *  @param  distance   distance to move right
+     **/
+    private void moveRight(int distance)
+    {
+        myCenterX += distance;
+    }
+
+    /** Moves this fish <code>distance</code> units to the left.
+     *  @param  distance   distance to move left
+     **/
+    private void moveLeft(int distance)
+    {
+        myCenterX -= distance;
+    }
+
+    /** Moves this fish <code>distance</code> units up.
+     *  @param  distance   distance to move up
+     **/
+    private void rise(int distance)
+    {
+        myCenterY -= distance;        // y coordinates get smaller going up
+    }
+
+    /** Moves this fish <code>distance</code> units down.
+     *  @param  distance   distance to move down
+     **/
+    private void sink(int distance)
+    {
+        myCenterY += distance;        // y coordinates get bigger going down
+    }
+
+}
+

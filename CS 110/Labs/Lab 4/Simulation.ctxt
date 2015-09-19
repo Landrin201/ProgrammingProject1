@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Simulation()
+comment0.text=\r\n\ \ \ \ \ \ Constructor\ for\ Simulation\ class.\r\n
+comment1.params=
+comment1.target=void\ step()
+comment1.text=\r\n\ \ \ \ \ \ \ The\ step\ method\ causes\ the\ fish\ to\ move\ around\ automatically\ by\ calling\ on\ \r\n\ \ \ \ \ \ \ the\ autoChangeDir\ method\ from\ the\ AquaFish\ class.\ After\ having\ the\ fish\ move\r\n\ \ \ \ \ \ \ it\ automatically\ refreshes\ the\ user\ interface\ so\ that\ the\ user\ can\ see\ the\r\n\ \ \ \ \ \ \ changes\ in\ position.\r\n\ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ The\ number\ of\ steps\ is\ assigned\ by\ the\ user.\ The\ default\ number\ of\ steps\r\n\ \ \ \ \ \ \ is\ 15.\r\n
+comment2.params=
+comment2.target=void\ run()
+comment2.text=\r\n\ \ \ \ \ \ This\ method\ makes\ the\ aquarium\ simulation\ run.\ It\ constructs\ the\ fish,\ \r\n\ \ \ \ \ \ adds\ them\ to\ an\ array\ list,\ adds\ all\ of\ the\ fish\ to\ the\ aqurium,\ and\ has\ \r\n\ \ \ \ \ \ the\ fish\ move\ around\ as\ dictated\ by\ the\ step\ method\ above.\r\n\ \ \ \ \ \ \r\n\ \ \ \ \ \ The\ default\ number\ of\ fish\ is\ 7.\r\n
+numComments=3

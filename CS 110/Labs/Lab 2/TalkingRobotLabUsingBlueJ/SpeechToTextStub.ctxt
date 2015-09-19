@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=
+comment0.target=java.lang.String\ getQuestion()
+comment0.text=Returns\ a\ (random)\ question\ posed\ by\ the\ user.
+numComments=1

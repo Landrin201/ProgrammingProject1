@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=clock
+comment0.target=void\ sayAPhrase(Clock)
+comment0.text=\ Outputs\ a\ random\ phrase,\ depending\ on\ the\ time\ of\ day\r\n\ \ \ \ \ \ \ (at\ different\ times\ of\ day\ a\ different\ set\ of\ random\r\n\ \ \ \ \ \ \ phrases\ are\ used).\ <br>\r\n\ \ \ \ \ \ \ The\ time\ blocks\ are\:\ <br>\r\n\ \ \ \ \ \ \ 0-6,\ 6-8,\ 8-9,\ 9-11,\ 11-13,\ 13-17,\ 17-20,\ and\ 20-23.\ <br>\r\n\ \ \ \ \ \ \ To\ add\ more\ statements,\ edit\ the\ nested\ if/else\ statements.\ \r\n\ \ \ \ \ \ \ Remember\ to\ add\ more\ numbers\ to\ the\ random\ number\ generator,\ or\ \r\n\ \ \ \ \ \ \ the\ newly\ added\ phrases\ will\ never\ display\!\r\n\ \ \ \ \ \ \ @param\ \ clock\ \ \ an\ object\ that\ provides\ the\ time\ of\ day\r\n
+comment1.params=question
+comment1.target=void\ respondTo(java.lang.String)
+comment1.text=\ Outputs\ a\ random\ phrase,\ depending\ on\ the\ question.\r\n\ \ \ \ \ \ \ (For\ each\ possible\ question,\ a\ different\ set\ of\ random\r\n\ \ \ \ \ \ \ phrases\ are\ used).\r\n\ \ \ \ \ \ \ @param\ \ question\ the\ question\ asked\ by\ the\ user\ to\ which\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ robot\ should\ respond\r\n
+numComments=2

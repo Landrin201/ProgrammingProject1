@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main(java.lang.String[])
+comment0.text=\r\n\ \ \ \ \ \ \ This\ is\ the\ main\ function\ for\ a\ trivially\ simple\ Java\ application\r\n\ \ \ \ \ \ \ which\ prints\ a\ quote\ from\ V\ for\ Vendetta.\r\n\ \ \ \ \ \ \ @param\ \ \ \ String\ args[]\ is\ never\ used\r\n
+numComments=1

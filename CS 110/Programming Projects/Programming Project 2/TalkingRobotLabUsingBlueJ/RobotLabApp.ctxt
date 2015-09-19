@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main(java.lang.String[])
+comment0.text=\r\n\ \ \ \ \ \ \ This\ is\ the\ main\ function\ that\ starts\ the\ execution\ of\ the\r\n\ \ \ \ \ \ \ Talking\ Robot\ program,\ which\ will\ say\ several\ different\ things.\r\n\ \ \ \ \ \ \ <br>\r\n\ \ \ \ \ \ \ It\ first\ constructs\ a\ clock,\ then\ a\ robot,\ then\ uses\ the\ clock\r\n\ \ \ \ \ \ \ to\ tell\ the\ robot\ to\ say\ a\ phrase.\ It\ then\ has\ the\ robot\ answer\ three\r\n\ \ \ \ \ \ \ randomly\ selected\ questions.\r\n\ \ \ \ \ \ \ @param\ \ \ \ String[]\ args\ is\ not\ used\ in\ this\ program\r\n
+numComments=1

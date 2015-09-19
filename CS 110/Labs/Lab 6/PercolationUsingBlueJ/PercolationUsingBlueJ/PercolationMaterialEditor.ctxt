@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=frame
+comment0.target=PercolationMaterialEditor(edu.kzoo.grid.gui.GridAppFrame)
+comment0.text=\ Constructs\ an\ empty\ PercolationMaterialEditor\ window.\r\n\ \ \ \ @param\ frame\ \ the\ frame\ that\ invoked\ this\ grid\ editor\r\n
+numComments=1

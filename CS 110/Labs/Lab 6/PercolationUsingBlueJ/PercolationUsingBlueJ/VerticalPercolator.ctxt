@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=VerticalPercolator()
+comment0.text=\r\n\ Constructor\ with\ no\ parameters.\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ This\ method\ is\ here\ for\ debugging\ purposes\r\n
+comment2.params=
+comment2.target=edu.kzoo.grid.Location\ getPercolationLocation()
+comment2.text=\ \r\n\ Get\ the\ location\ of\ the\ block\ to\ percolate\ to\r\n
+comment3.params=location
+comment3.target=void\ percolateTo(edu.kzoo.grid.Location)
+comment3.text=\r\n\ Add\ a\ new\ block\ to\ the\ block\ below\ the\ initial\ percolator,\ assuming\ it\ is\ empty\ and\r\n\ inside\ of\ the\ grid.\r\n\ \r\n\ @param\ \ location\ must\ be\ a\ <code>Location</code>\ object.\r\n
+numComments=4

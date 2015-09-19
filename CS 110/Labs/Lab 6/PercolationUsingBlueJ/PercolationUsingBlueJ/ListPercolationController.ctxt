@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ListPercolationController()
+comment0.text=Constructs\ a\ ListPercolationController\ object.
+comment1.params=
+comment1.target=void\ adjustToNewGrid()
+comment1.text=\ Re-initializes\ anything\ that\ is\ necessary\ when\ the\ grid\ changes\r\n\ \ (called\ by\ <code>setGrid</code>\ and\ <code>randomlyFillGrid</code>).\r\n
+comment2.params=
+comment2.target=void\ step()
+comment2.text=\ Advances\ the\ application\ one\ step.\ \r\n
+comment3.params=newObj
+comment3.target=void\ notePercolationTo(edu.kzoo.grid.GridObject)
+comment3.text=\ Takes\ note\ of\ the\ fact\ that\ the\ material\ has\ percolated,\r\n\ \ creating\ the\ given\ new\ percolation\ material\ object.\r\n
+comment4.params=
+comment4.target=boolean\ hasReachedStoppingState()
+comment4.text=\ Determines\ whether\ a\ running\ application\ has\ reached\ a\ desired\r\n\ \ stopping\ state.\ \ In\ this\ case,\ stop\ if\ there\ are\ no\ percolation\r\n\ \ material\ objects\ needing\ to\ percolate\ in\ next\ step.\r\n\ \ \ \ @return\ <code>true</code>\ if\ the\ application\ should\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ stop\ \r\n
+numComments=5

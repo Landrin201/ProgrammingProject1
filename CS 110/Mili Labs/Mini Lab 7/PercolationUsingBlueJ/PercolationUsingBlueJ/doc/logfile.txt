@@ -1,0 +1,57 @@
+Class documentation
+<---- javadoc command: ---->
+C:\Program Files\Java\jdk1.8.0_45\bin\javadoc.exe
+-author
+-version
+-nodeprecated
+-package
+-source
+1.8
+-noindex
+-notree
+-nohelp
+-nonavbar
+-d
+C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\doc
+-classpath
+C:\BlueJ\lib\bluejcore.jar;C:\BlueJ\lib\junit.jar;C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\+libs\grid.jar;C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ
+C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\PercolationController.java
+<---- end of javadoc command ---->
+Loading source file C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\PercolationController.java...
+Constructing Javadoc information...
+Standard Doclet version 1.8.0_45
+Building tree for all the packages and classes...
+Generating C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\doc\PercolationController.html...
+C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\PercolationController.java:22: warning: no @param for c
+    protected static Object newObject(Class c, String type)
+                            ^
+C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\PercolationController.java:22: warning: no @param for type
+    protected static Object newObject(Class c, String type)
+                            ^
+C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\PercolationController.java:22: warning: no @return
+    protected static Object newObject(Class c, String type)
+                            ^
+C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\PercolationController.java:31: warning: no @param for c
+    protected static void setController(PercolationController c)
+                          ^
+C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\PercolationController.java:38: warning: no @return
+    protected static PercolationController getController()
+                                           ^
+C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\PercolationController.java:108: warning: no @param for newObj
+    public abstract void notePercolationTo(GridObject newObj);
+                         ^
+C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\PercolationController.java:111: warning: no @param for currentPercType
+    public void runExperiments(Class currentPercType)
+                ^
+C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\PercolationController.java:170: warning: no @return
+    protected boolean percolatedToBottom()
+                      ^
+Generating C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\doc\package-frame.html...
+Generating C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\doc\package-summary.html...
+Generating C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\doc\constant-values.html...
+Building index for all the packages and classes...
+Building index for all classes...
+Generating C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\doc\allclasses-frame.html...
+Generating C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\doc\allclasses-noframe.html...
+Generating C:\Users\Marc\Documents\CS 110\Mili Labs\Mini Lab 7\PercolationUsingBlueJ\PercolationUsingBlueJ\doc\index.html...
+8 warnings

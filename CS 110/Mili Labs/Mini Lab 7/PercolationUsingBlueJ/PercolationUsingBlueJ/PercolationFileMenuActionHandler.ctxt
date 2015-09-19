@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=frame\ fileHandler
+comment0.target=PercolationFileMenuActionHandler(edu.kzoo.grid.gui.GridAppFrame,\ edu.kzoo.grid.gui.GridDataFileHandler)
+comment0.text=\ Constructs\ a\ new\ PercolationFileMenuActionHandler\ object.\r\n\ \ @param\ frame\ \ the\ frame\ that\ uses\ this\ action\ handler\r\n\ \ @param\ fileHandler\ object\ that\ can\ read\ and\ write\ a\ grid;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ null\ if\ this\ handler\ should\ not\ support\ file\ i/o\r\n
+comment1.params=
+comment1.target=boolean\ supportsGridEditing()
+comment1.text=\ Indicates\ whether\ this\ controller\ supports\ grid\ editing.\r\n\ \ @return\ <code>true</code>\r\n
+comment2.params=
+comment2.target=void\ createNewGrid()
+comment2.text=\ Creates\ a\ new\ empty\ grid\ and\ invokes\ the\ grid\ editor.\r\n\ \ (Precondition\:\ <code>supportsGridEditing()\ \=\=\ true</code>\r\n
+comment3.params=
+comment3.target=void\ invokeEditor()
+comment3.text=\ Invokes\ the\ appropriate\ editor.\r\n
+comment4.params=grid
+comment4.target=void\ editGrid(edu.kzoo.grid.Grid)
+comment4.text=\ Enables\ editing\ of\ an\ existing\ grid.\r\n
+numComments=5

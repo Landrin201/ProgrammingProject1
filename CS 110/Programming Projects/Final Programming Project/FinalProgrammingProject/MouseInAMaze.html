@@ -1,0 +1,299 @@
+<html><head>
+
+<title>Mouse in a Maze Specification</title><link href="mailto:abrady@kzoo.edu">
+<LINK REL=STYLESHEET TYPE="text/css" HREF="labs.css"></head>
+<body>
+
+<p>
+<DIV ID=siteTitle>
+  <h1>Mouse in a Maze Program</h1>
+</DIV>
+
+<DIV ID=author>
+  <a href="http://max.cs.kzoo.edu/~abrady/">Alyce Brady</a><br>
+  <a href="http://www.kzoo.edu/">Kalamazoo College</a>
+</DIV>
+
+<p>
+<hr width="100%">
+
+<p>In this program you will implement a simulation of a mouse looking for a piece 
+  of cheese in a maze.</p>
+<h3> Problem Specification:</h3>
+<p>Design a program to simulate mice moving through a maze until they find cheese.&nbsp; 
+  A mouse always starts at the starting position, and moves one unit at a time.&nbsp; 
+  Your program should be able to support mice with different movement strategies.</p>
+<ul>
+  <li>One type of mouse teleports directly to the
+     cheese (the &quot;beam-me-up mouse&quot;).</li>
+  <li>Another moves randomly until it happens to stumble across some 
+    cheese (the &quot;clueless mouse&quot;).</li>
+  <li>Another moves randomly unless there is cheese in sight within two units,
+    in which case it moves to (and eats) the cheese (the &quot;short-sighted
+    mouse&quot;).&nbsp; (This mouse does not see cheese that is around a corner,
+    even if it is only two units away.)</li>
+  <li>Another moves randomly unless there is cheese anywhere in sight, in which
+    case it moves toward the cheese (the &quot;long-sighted mouse&quot;).</li>
+  <li>Another moves toward the smell of cheese (the &quot;nosy mouse&quot;).&nbsp; 
+    <font color="#FF0000">(Implementing this strategy is optional!)</font></li>
+  <li>Another moves systematically through the maze until finding the cheese (the 
+    &quot;systematic mouse&quot;).&nbsp; <font color="#FF0000">(Implementing this 
+    strategy is optional!)</font></li>
+  <li>You may also implement other strategies that you find interesting.&nbsp; 
+    <font color="#FF0000">(Implementing additional strategies is optional!)</font></li>
+</ul>
+<p>Your program should read in a maze configuration, including the starting position
+   and the location of the cheese (the start and end locations for the maze).&nbsp; 
+  It should allow the user to run the experiment several times, with different
+  maze configuration files.&nbsp; Each
+  time, a piece of cheese is put at the end of the maze, a mouse is put at the
+  starting
+  
+  location, and the mouse is allowed to move around the maze looking for the
+  cheese.&nbsp; 
+  The user should be able to choose the type of mouse or mouse movement strategy
+  for each run of the experiment.&nbsp; Your program should graphically display
+  the state of the mouse and the maze at the end of each time unit.&nbsp; When
+  a mouse finds the cheese, your program should report how many time units it
+  took
+  for
+  the
+   mouse to find 
+  the cheese.</p>
+<h3>More specific details:</h3>
+<p>Your program should have a graphical user interface with a File menu, a mouse
+  choice drop-down menu, a button to add a mouse, a panel in which the maze is
+  graphically displayed, 
+  and a slider bar for changing the speed of the mouse movement.&nbsp; (Actually,
+   it controls the speed of the animation -- how long the program pauses to let
+  
+  you view the display between time steps -- rather than the speed of the mice.)</p>
+<p>You may use the following classes or files, which have been fully  
+  implemented and are available in <a href="MouseInAMaze.zip">MouseInAMaze.zip</a> and
+  <a href="http://www.cs.kzoo.edu/GridPkg/grid.jar">grid.jar</a>:</p>
+<ul>
+  <li><code>Cheese</code> - an extension of the <code>ColorBlock</code> 
+    class (you could implement it in some other way, though, if you chose)</li>
+  <li><code>MazeDataFileHandler</code> - a class that reads 
+    the maze information from a file and constructs the maze</li>
+  <li><code>MouseFileMenu</code> - a class that provides a
+    File menu with an Open menu item; you may ignore this class as it is only
+    used by the graphical user interface</li>
+  <li><code>MouseMazeController</code> - a class that controls the mouse
+    movement during program execution</li>
+  <li><code>MouseMazeGUI</code> - a class that provides a graphical
+    user interface for the Mouse-in-a-Maze project</li>
+  <li><code>maze1.dat</code> - a sample maze initial configuration file</li>
+  <li><code>grid.jar</code> 
+    - a Java archive library containing classes such as <code>BoundedGrid</code>, 
+    <code>ColorBlock</code>, <code>ColorBlockDisplay</code>, <code>BasicGridFileMenu</code>, 
+    <i>etc</i>.&nbsp; The class documentation for all classes in this library is
+	available <a href="http://www.cs.kzoo.edu/GridPkg/GridPkgClassDocumentation/">online</a>.
+	<!-- The <a href="GenericEnvAPI.zip">GridPkg.zip</a> 
+    file contains class documentation for <i>all</i> of the classes in this library. --></li>
+</ul>
+<p>You will need to implement or modify the following classes:</p>
+<ul>
+  <li><code>Maze</code> - an extension of the <code>BoundedGrid</code> class</li>
+  <li><code>Mouse</code> - an object that moves around the maze looking for cheese</li>
+  <li><code>MouseInAMazeApp</code> - a main class that specifies how to display
+    mice and color blocks, specifies the type of mice in the program, and 
+     constructs a <code>MazeGUI</code> object; you will need to edit this class
+     when you add new <code>Mouse</code> types to the project and want them to
+     appear in the drop-down menu.</li>
+  <li>several classes that represent different types of mice, including the <code>Mouse</code>    class and several subclasses</li>
+</ul>
+<h3>One possible plan of attack:</h3>
+<p>You will probably find it useful to implement this program in stages (<i>iterative 
+  development</i>).&nbsp; For example, you might:</p>
+<ol>
+  <li>Implement the minimum amount of code that will let you compile and run
+    a working program. 
+	(<a href="#MinimumCode">More details are below.</a>)</li>
+  <li>Implement a (theoretically) moving mouse. (<a href="#MovingMouse">More
+      details are below.</a>)</li>
+  <li>Implement various types of moving mice. (<a href="#ManyMovingMice">More details
+      are below.</a>)</li>
+  <li>Display the mouse graphically or with an image (this could be done earlier
+    if you like). (<a href="#MouseDisplay">More details are below.</a>)</li>
+</ol>
+<p>You do not have to develop the program in this way, but if you want to follow 
+  this structured approach you will find more details below.</p>
+<h4><a name="MinimumCode"></a>Implementing the minimum amount of code that will
+  let you compile and run a working program:</h4>
+<ul>
+      
+  <li>Download <code>mousemaze.zip</code> into the <code>Temp</code> folder on the <code>C</code> drive and extract
+    the files.</li>
+      
+  <li>Create a project in a folder on your <code>M</code> drive and import the
+    extracted files from <code>mousemaze.zip</code> into the project (Import from File System).&nbsp; Bring
+    up the the File-&gt;Properties dialog box and, in the Java Libraries tab, add
+    the <code>grid.jar</code> file
+    you&nbsp; just
+    imported.</li>
+  <li>Construct a <code>Maze</code> class that extends <code>BoundedGrid</code>.&nbsp; The
+    <code>MazeDataFileHandler</code> object will read in a maze configuration
+    file and construct a <code>Maze</code> object that corresponds to the configuration
+    file.&nbsp; In
+    order for <code>MazeDataFileHandler</code> to
+    work correctly, the new class must be called <code>Maze</code> and it must
+    have a two-parameter constructor just like <code>BoundedGrid</code>.&nbsp; It
+    should also have two instance variables to keep track of the starting location
+    (for the mouse) and the finish location (the location of the cheese).  It
+    should have &quot;getter&quot; and &quot;setter&quot; methods for those instance variables, which
+    must be called <code>setStartLoc</code>, <code>setFinishLoc</code>, <code>getStartLoc</code>,
+    and <code>getFinishLoc</code> in order for the <code>MouseMazeGUI</code> and
+    <code>MouseMazeController</code> to work correctly.
+   &nbsp; The
+        two setter methods must each take a single <code>Location</code> as
+        a parameter and have a <code>void</code> return type.&nbsp; The getter
+        methods do not need any parameters, but should return the appropriate
+    <code>Location</code> object.&nbsp; You should implement the constructor
+    and the four methods to interact with your two instance variables correctly.&nbsp; </li>
+      <li>Construct a <code>Mouse</code> class.&nbsp; The <code>MouseMazeGUI</code> object
+        will construct a mouse and add it to the maze when the user clicks on
+        an Add Mouse button.&nbsp; In order for <code>MouseMazeGUI</code>        to
+        work correctly, the new class must be called <code>Mouse</code> and
+         it should have a zero-parameter constructor.&nbsp; As a starting point
+         you may wish to have your <code>Mouse</code> class extend the <code>ColorBlock</code> class in
+         the same way that <code>Cheese</code> does so that you have something you can easily
+         display.&nbsp; You may wish to make your mouse <code>LIGHT_GRAY</code> rather than
+         <code>YELLOW</code>.</li>
+      <li>Run the program.&nbsp; Use the File menu to open the <code>maze1.dat</code> initial
+        configuration file.&nbsp; This should create and display a maze with
+    a piece of cheese in it, but no mouse.&nbsp; Test the various components
+    of the graphical user interface to see which ones work at this point.&nbsp; Look
+    at the contents of maze1.dat and see if you can figure out what each line
+    of the file might mean.&nbsp; Test your hypotheses by creating a new initial
+    configuration file with different values.</li>
+</ul>
+    
+    
+<h4><a name="MovingMouse"></a>Implementing a (theoretically) moving mouse: </h4>
+<ul>
+      <li>Implement a <code>move</code> method in the <code>Mouse</code> class that does the following:
+        <ul>
+          <li>Determine the location this mouse should move to.&nbsp; You may
+            wish to create a helper method, <code>nextLocation</code> for example,
+            that calculates this location.&nbsp; For now, the next location could
+            be the current location.</li>
+          <li>If the new location is the same as the current location, you're
+            done.</li>
+          <li>Otherwise,
+            <ul>
+              <li>If the new location contains the cheese, the mouse should &quot;eat&quot;
+                it (remove it from the grid) before attempting to move into that
+                location.&nbsp; (You may wish to add a method that
+                casts the grid to the <code>Maze</code> class, as described below.)</li>
+              <li>Regardless of whether the new location was the one containing
+                the cheese, the mouse should move to the new location</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Even though the <code>Mouse</code> class inherits a method from <code>GridObject</code> that
+        returns its grid, you may wish to create another method that returns
+        the grid as a <code>Maze</code> object so that you don't have to cast
+      the grid to a <code>Maze</code> over and over in your program.</li>
+      <li>Redefine the <code>toString</code> method in the <code>Mouse</code> class
+        to indicate the mouse's class and location.&nbsp; You can get the name
+        of an object's class with the following: <code>object.getClass().getName()</code>.</li>
+      <li>Test your initial move method.&nbsp; (The mouse should not, in fact,
+          move yet.)</li>
+</ul>
+    
+<h4><a name="ManyMovingMice"></a>Implementing various types of moving mice: </h4>
+<ul>
+      <li>Construct a subclass of the <code>Mouse</code> class that will &quot;teleport&quot;
+        directly to the location of the cheese (the &quot;beam me up&quot; mouse).</li>
+      <li>Modify your main class to add your new <code>Mouse</code> subclass
+        to the list of mouse types passed to the graphical user interface.&nbsp; If
+        you do this correctly, your subclass should show up in the drop-down
+        menu when you
+        run the program.&nbsp; If you have the subclass selected in the drop-down
+        menu before you click on the Add Mouse button, the new mouse should be
+        a &quot;beam me up&quot; mouse.</li>
+      <li>Run your program several times until you have confidence that your
+      new <code>Mouse</code> subclass is working correctly.&nbsp; If your program
+      throws an exception right away, make sure that your mouse is &quot;eating&quot; the
+      cheese before attempting to move into that location, since a grid does
+      not allow two objects in the same cell at the same time.</li>
+      <li>Modify your program to keep track of how many moves it takes for the
+        mouse to find the cheese and report this at the end of the run.&nbsp; You
+        may report the toal number of mouse moves with a call to <code>System.out.println</code>,
+        or you may investigate using the <code>JOptionPane</code> class (<font color="#FF0000">optional</font>).
+        Run your program several times until you have confidence that your calculations
+        of the number of moves is working correctly.&nbsp; (You may wish to print
+        the total after every step as you are testing, until you are confident
+        that it is being calculated correctly.)</li>
+      <li>Construct a subclass of the <code>Mouse</code> class that will move
+        randomly to any adjacent location in the maze (the &quot;clueless mouse&quot;).&nbsp; You
+        may wish to use the <code>nextLocation</code> method from the <code>Fish</code> class
+        in the Marine Biology Simulation as a template.</li>
+      <li>Add your new <code>Mouse</code> subclass
+          to the list of mouse types in your main class.&nbsp; Run your program
+          several times until you have confidence that your new <code>Mouse</code> subclass
+          is working correctly.</li>
+      <li>Construct other subclasses that move  in the various ways described
+        in the problem specification above: as a short-sighted
+        mouse, a long-sighted mouse, and any
+        other types
+        you
+        choose
+        to implement.&nbsp; Add
+      each class to the list of mouse types in your main class.&nbsp; </li>
+      <li>Run each
+          type of mouse at least 10 times and manually calculate the average
+        number of times each type of mouse takes to find the cheese.</li>
+</ul>
+    
+<h4><a name="MouseDisplay"></a>Displaying a mouse graphically or with an image: </h4>
+<ul>
+  <li>Update your main class to specify how to display a mouse as something other
+    than a color block.&nbsp; You
+    could create a <code>MouseDisplay</code> class that draws a mouse graphically,
+    or you could
+    use 
+    an image, such as the <code>mouse.gif</code> image.&nbsp; To associate an
+    image with a class, construct a new <code>ScaledImageDisplay</code> as the
+    display object, passing it the name of the image file as a <code>String</code> parameter
+      (<i>e.g.</i>, 
+    &quot;mouse.gif&quot;).
+     If you want the image to be take on the appropriate color for a mouse, add
+    a <code>ScaledImageTintDecorator</code> to the image display. This will tint
+    the image with the color specified by the mouse's <code>color</code> method.&nbsp; You
+    can find the class documentation for <code>ScaledImageDisplay</code> and <code>ScaledImageTintDecorator</code> <a href="http://www.cs.kzoo.edu/GridPkg/GridPkgClassDocumentation/">online</a>.<br>
+     <br>
+     Since your mouse is no longer displayed as a color block, you may wish to
+     change your <code>Mouse</code> class to extend <code>GridObject</code> rather
+     than <code>ColorBlock</code>.&nbsp; If you do this, and if your method of
+     displaying a mouse makes use of its color, you will need to add an instance
+     variable and a <code>color</code> method
+     to the <code>Mouse</code> class
+     to keep track of and report its color.    <br>
+    &nbsp; <br>
+    <font color="#FF0000">Optional: </font>If you wish to write a class to display 
+    a mouse graphically, you may want to use the <code>FishDisplay</code> class 
+    as a model.&nbsp; Note that a display class assumes 
+    that it is drawing in a 1 x 1 area with the origin at the center of the area.&nbsp; 
+    In other words, the pixels range from -0.5 to 0.5 for both the x and y coordinates.&nbsp; 
+    You can leave out (or comment out) the code for the gradient if you prefer.&nbsp;<b> 
+    (I suggest you not spend time creating a clever <code>MouseDisplay</code> 
+    class until after everything else in your program is working!)</b><br>
+  &nbsp; </li>
+  <li><font color="#FF0000">Optional:</font> You can also display the cheese graphically 
+    or using an image, if you want.&nbsp; (This is, in fact, the main advantage 
+    to having a separate <code>Cheese</code> class, rather than just use an object 
+    of the <code>ColorBlock</code> class.)<br>&nbsp; 
+  </li>
+  <li><font color="#FF0000">Optional:</font> If you want to, you could investigate
+    adding an extra two rows at the bottom of a maze and then keeping a running
+    total of the number of mouse moves in a cell in the bottom row.</li>
+</ul>
+
+<center>
+<hr width="100%">
+</center>
+
+</body></html>

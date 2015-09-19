@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SlowPercolationController()
+comment0.text=\ Constructs\ a\ SlowPercolationController\ object,\ initializing\ both\ the\r\n\ \ inherited\ and\ the\ newly\ introduced\ instance\ variables.\r\n
+comment1.params=
+comment1.target=void\ step()
+comment1.text=Advances\ the\ application\ one\ step.
+comment2.params=newObj
+comment2.target=void\ notePercolationTo(edu.kzoo.grid.GridObject)
+comment2.text=\ Takes\ note\ of\ the\ fact\ that\ the\ material\ has\ percolated,\r\n\ \ creating\ the\ given\ new\ percolation\ material\ object.\r\n
+comment3.params=
+comment3.target=boolean\ hasReachedStoppingState()
+comment3.text=\ Determines\ whether\ a\ running\ application\ has\ reached\r\n\ \ a\ desired\ stopping\ state.\ \ In\ this\ case,\ stop\ if\ the\r\n\ \ latest\ step\ did\ not\ include\ any\ new\ percolation.\r\n\ \ \ \ @return\ <code>true</code>\ if\ the\ application\ should\ stop\ \r\n
+numComments=4

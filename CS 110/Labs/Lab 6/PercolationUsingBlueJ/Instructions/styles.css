@@ -1,0 +1,72 @@
+/* Colors: #088 is a nice teal, #080 is a true green,
+	#37f is a true blue, #22a is almost indigo,
+	#060 is a dark hunter green, #a00 is a rich red,
+ */
+
+BODY {
+	background-color:	#fff;
+/*	background-image:   url(./gifs/backgrounds/bgclouds.gif); */
+	color:	black;
+	font-size:	medium;
+/*	margin-left:	150px; */
+}
+
+A:link		{ color: #088; text-decoration: underline }
+A:visited, A:active	{ color: #047; text-decoration: underline }
+
+#siteTitle {
+	color:	#a00;
+	text-align:	center;
+}
+
+A.sTitleA:link, A.sTitleA:visited, A.sTitleA:active  {
+	color: #a00;
+	text-decoration:	underline;
+}
+
+#author {
+	text-align:	center;
+}
+
+#pageTitle {
+	color:	indigo;
+	text-align:	center;
+}
+
+#navigBar {
+	color: white
+	text-align:	center;
+}
+
+#copyright {
+	margin-left:	20px;
+	margin-right:	20px;
+	font-size:	small;
+	font-style:	italic;
+}
+
+#footer {
+	font-size:	small;
+	font-style:	italic;
+}
+
+h2, h4, h5, em {
+    color: red;
+}
+
+code {
+    color: blue;
+}
+
+/* Following should be shared among course web sites:
+	@import "http://max.cs.kzoo.edu/styles/SharedCourseStyles";
+*/
+
+SPAN.Tall { font-size:	x-large }
+
+SPAN.SmCap { font-size:	large }
+
+/* Another way to do the above might be H1:first-letter { font: 2em },
+ * although this does not deal well with words like 1998 which should
+ * be completely tall.
+ */

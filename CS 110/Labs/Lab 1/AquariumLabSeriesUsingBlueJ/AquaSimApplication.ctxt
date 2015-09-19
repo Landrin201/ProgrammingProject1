@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main([)
+comment0.text=\nThis\ is\ the\ main\ function.\ \ It\ executes\ the\ program.\n@param\ \ \ \ String\ args[]\ is\ never\ used\n\n
+numComments=1

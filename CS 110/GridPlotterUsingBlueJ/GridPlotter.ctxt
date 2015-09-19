@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=disp\ colorChooser
+comment0.target=GridPlotter(GridPlotterGUI,\ ColorChoiceMenu)
+comment0.text=Constructs\ an\ object\ that\ could\ draw\ in\ a\ grid.\n@param\ disp\ \ \ \ an\ object\ that\ knows\ how\ to\ display\ a\ grid\n@param\ colorChooser\ \ a\ menu\ for\ choosing\ the\ color\ block\ color\n\n
+comment1.params=grid
+comment1.target=void\ reactToNewGrid(Grid)
+comment1.text=Sets\ the\ grid\ in\ which\ to\ draw.\n\n
+comment2.target=void\ onClearGridButtonClick()
+comment2.text=Removes\ all\ objects\ from\ the\ grid.\n\n
+comment3.target=void\ onRowMajorFillButtonClick()
+comment3.text=Fills\ in\ all\ the\ cells\ of\ the\ grid\ using\ a\ row-major\ traversal.\n\n
+comment4.target=void\ onColMajorFillButtonClick()
+comment4.text=Fills\ in\ all\ the\ cells\ of\ the\ grid\ using\ a\ column-major\ traversal.\n\n
+comment5.params=row\ column
+comment5.target=void\ ensureEmpty(int,\ int)
+comment5.text=Ensures\ that\ the\ specified\ location\ is\ empty\ by\ removing\ the\ object\nthere,\ if\ there\ is\ one.\n@param\ row\ \ \ \ \ \ row\ number\ of\ location\ that\ should\ be\ empty\n@param\ column\ \ \ column\ number\ of\ location\ that\ should\ be\ empty\n\n
+comment6.params=row\ column
+comment6.target=void\ placeColorBlock(int,\ int)
+comment6.text=Puts\ a\ color\ block\ in\ the\ specified\ location\ and\ redisplays\ the\ grid.\n@param\ row\ \ \ \ \ \ row\ in\ which\ to\ place\ the\ new\ color\ block\n@param\ column\ \ \ column\ in\ which\ to\ place\ the\ new\ color\ block\n\n
+numComments=7

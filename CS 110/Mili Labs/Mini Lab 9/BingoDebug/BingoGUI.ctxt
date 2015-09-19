@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=java.awt.Color\ getColHeadingColor()
+comment0.text=Returns\ the\ color\ to\ use\ for\ column\ headings.
+comment1.params=
+comment1.target=java.awt.Color\ getMarkedColor()
+comment1.text=Returns\ the\ color\ to\ use\ for\ unmarked\ Bingo\ values.
+comment2.params=
+comment2.target=java.awt.Color\ getUnmarkedColor()
+comment2.text=Returns\ the\ color\ to\ use\ for\ unmarked\ Bingo\ values.
+comment3.params=
+comment3.target=javax.swing.JPanel\ defineContent()
+comment3.text=Defines\ contents\ of\ main\ window\ panel.
+numComments=4

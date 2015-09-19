@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=grid\ studentName\ assistants\ date
+comment0.target=SimpleGridObjectGUI(BoundedGrid,\ String,\ String,\ String)
+comment0.text=Constructs\ a\ new\ SimpleGridObjectGUI\ object\ (a\ graphical\ user\ interface\nfor\ a\ Simple\ Grid\ Object\ application)\n@param\ grid\ \ \ \ the\ grid\ to\ be\ displayed\ by\ this\ GUI\n@param\ studentName\ \ \ \ the\ name\ of\ the\ student\ creating\ this\ program\n@param\ assistants\ \ \ \ \ the\ name\ of\ anyone\ who\ helped\ with\ this\ program\n@param\ date\ \ \ \ \ \ \ \ \ \ \ the\ date\ when\ the\ program\ was\ finished\n\n
+numComments=1

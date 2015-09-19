@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=mouseTypes
+comment0.target=MouseMazeGUI(java.util.Collection)
+comment0.text=\ Constructs\ a\ new\ MouseMazeGUI\ object.\r\n\ \ \ \ @param\ mouseTypes\ a\ collection\ of\ <code>Class</code>\ objects\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ representing\ the\ mouse\ classes\ supported\ by\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ program\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=Maze\ getMaze()
+comment2.text=Returns\ the\ maze\ controlled\ by\ this\ graphical\ user\ interface.\ *
+comment3.params=mouseTypes
+comment3.target=javax.swing.JComboBox\ makeMouseClassChooser(java.util.Collection)
+comment3.text=\ Creates\ the\ drop-down\ menu\ for\ choosing\ a\ type\ of\ mouse.\r\n\ \ \ \ @param\ mouseTypes\ a\ collection\ of\ <code>Class</code>\ objects\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ representing\ the\ mouse\ classes\ supported\ by\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ program\r\n
+comment4.params=
+comment4.target=java.lang.Class\ getMouseClass()
+comment4.text=\ Returns\ the\ type\ of\ mouse\ indicated\ by\ the\ drop-down\ menu.\r\n\ \ \ \ @return\ the\ class\ of\ the\ type\ of\ mouse\ currently\ selected\ in\r\n\ \ \ \ \ \ \ \ \ \ \ \ the\ drop-down\ menu\ for\ choosing\ mouse\ types\r\n
+comment5.params=
+comment5.target=void\ addMouseToGrid()
+comment6.params=
+comment6.target=void\ step()
+comment6.text=\ (non-Javadoc)\r\n\ @see\ edu.kzoo.grid.gui.SteppedGridAppFrame\#step()\r\n
+comment7.params=
+comment7.target=void\ initialize()
+comment7.text=\ (non-Javadoc)\r\n\ @see\ edu.kzoo.grid.gui.SteppedGridAppFrame\#initialize()\r\n
+numComments=8

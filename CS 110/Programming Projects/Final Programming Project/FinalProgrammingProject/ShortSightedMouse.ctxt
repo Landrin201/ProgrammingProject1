@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ShortSightedMouse()
+comment0.text=\r\n\ Constructs\ a\ mouse.\r\n\ \ \r\n\ \ For\ now,\ the\ mouse\ is\ always\ a\ blue\ color\ block.\r\n
+comment1.params=
+comment1.target=void\ move()
+comment1.text=\r\n\ Abstract\ move\ method,\ tells\ the\ mouse\ to\ move.\r\n
+comment2.params=currentLocation
+comment2.target=java.util.ArrayList\ possibleLocations(edu.kzoo.grid.Location)
+comment2.text=\r\n\ Returns\ an\ array\ list\ which\ contains\ all\ of\ the\ possible\ locations\r\n\ to\ which\ the\ mouse\ can\ move,\ whether\ or\ not\ they\ are\ empty.\r\n\ \r\n\ @param\ currentLocation\ must\ be\ a\ valid\ Location\ object\r\n\ @return\ Retrns\ an\ array\ list\ of\ Location\ objects\r\n
+comment3.params=nextLocation
+comment3.target=boolean\ look(edu.kzoo.grid.Location)
+numComments=4

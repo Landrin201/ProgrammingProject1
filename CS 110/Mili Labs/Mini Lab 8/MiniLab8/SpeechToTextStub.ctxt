@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=
+comment0.target=java.lang.String\ getQuestion()
+comment0.text=\ Returns\ a\ (random)\ question\ posed\ by\ the\ user.\r\n\ \ \ \ \ \ \ The\ questions\ generated\ try\ to\ simulate\ a\ broad\ range\r\n\ \ \ \ \ \ \ of\ questions\ that\ a\ real\ user\ may\ ask\ the\ robot.\ As\ \r\n\ \ \ \ \ \ \ such,\ a\ large\ number\ of\ possiblities\ are\ available.\r\n
+numComments=1

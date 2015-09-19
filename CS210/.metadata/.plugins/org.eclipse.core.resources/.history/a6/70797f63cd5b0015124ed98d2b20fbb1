@@ -1,0 +1,33 @@
+/*
+ * Author: Marc Kuniansky
+ * Date Created: June 18, 2015
+ * Modifications:
+ * 			Date			Author			Reason
+ * 		June 18 2015, Marc Kuniansky, Implemented the main method to print a simple statement.
+ * 		June 19 2015, Marc Kuniansky, Modified the main method to support the InputFileReader class. Also added the Debug class.
+ * 		July 02 2015, Marc Kuniansky, Modified the main method to support the new FileCreator class and to test the new methods in InputFileReader.
+ * 	  August 14 2015, Marc Kuniansky, Refactored main method to Initializer class.
+ */
+
+import java.util.ArrayList;
+
+/**
+ * Running the main method will print a simple text statement.
+ * @author Marc Kuniansky
+ * @version June 18, 2015
+ *
+ */
+public class MainMethod 
+{ //Begin class
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) 
+	{ //Begin main
+		String locationToSaveTo = new String("C"+":"+"\\"+"Users"+"\\"+"Marc"+"\\"+"Documents"+"\\"+"CS_Classes"+"\\"+"CS210"+"\\"+"SIPPractice"+"\\"+"Test Folder");
+		GUI GUI = new GUI();
+		Initializer initializer = new Initializer(locationToSaveTo, GUI);
+		
+	} //End main
+} //End class

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=rows\ columns
+comment0.target=Maze(int,\ int)
+comment0.text=\r\n\ Constructor\ for\ Maze\r\n
+comment1.params=startLocation
+comment1.target=void\ setStartLoc(edu.kzoo.grid.Location)
+comment2.params=endLocation
+comment2.target=void\ setFinishLoc(edu.kzoo.grid.Location)
+comment3.params=
+comment3.target=edu.kzoo.grid.Location\ getStartLoc()
+comment4.params=
+comment4.target=edu.kzoo.grid.Location\ getFinishLoc()
+numComments=5

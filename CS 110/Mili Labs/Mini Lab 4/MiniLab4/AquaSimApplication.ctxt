@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main(java.lang.String[])
+comment0.text=\r\n\ \ \ \ \ \ \ This\ is\ the\ main\ function.\ \ It\ first\ creates\ an\ aquarium\ of\r\n\ \ \ \ \ \ \ a\ specified\ width\ and\ height.\ It\ then\ adds\ several\ fish,\ creates\r\n\ \ \ \ \ \ \ the\ GUI,\ and\ tells\ the\ fish\ to\ move\ around.\r\n\ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ If\ no\ width\ and\ height\ are\ specified\ by\ the\ user,\ the\ default\ setting\ \r\n\ \ \ \ \ \ \ is\ 640x480.\ The\ default\ number\ of\ fish\ is\ 10,\ and\ the\ default\ number\r\n\ \ \ \ \ \ \ of\ steps\ is\ 15.\r\n\ \ \ \ \ \ \ @param\ \ \ \ String\ args[]\ is\ never\ used\r\n
+numComments=1

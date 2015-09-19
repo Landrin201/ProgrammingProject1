@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=file
+comment0.target=edu.kzoo.grid.Grid\ readGrid(java.io.File)
+comment0.text=\ Reads\ information\ about\ a\ maze\ from\ an\ initial\ configuration\r\n\ \ data\ file.\r\n\ \ @param\ \ file\ \ \ \ \ \ \ java.io.File\ object\ from\ which\ to\ read\r\n\ \ @throws\ java.io.FileNotFoundException\ if\ file\ cannot\ be\ opened\r\n\ \ @throws\ RuntimeException\ \ \ if\ invalid\ information\ is\ read\ from\ file\r\n
+comment1.params=
+comment1.target=Maze\ buildMaze()
+comment1.text=\ Reads\ maze\ specifications\ and\ constructs\ maze.\r\n\ \ @throws\ RuntimeException\ \ if\ invalid\ maze\ information\ is\ read\r\n
+comment2.params=maze
+comment2.target=edu.kzoo.grid.Location\ readLocation(Maze)
+comment2.text=\ Reads\ in\ a\ Location\ object\ (must\ be\ a\ valid\ location\ in\r\n\ \ <code>maze</code>).\r\n\ \ @param\ maze\ \ \ \ \ \ maze\ in\ which\ location\ must\ be\ valid\r\n\ \ @return\ \ the\ newly\ created\ Location\ object\r\n\ \ @throws\ RuntimeException\ \ \ if\ invalid\ location\ information\ is\ read\r\n
+comment3.params=
+comment3.target=int\ readInt()
+comment3.text=\ Returns\ the\ next\ token\ in\ the\ file\ as\ an\ integer.\r\n\ \ @return\ \ \ \ an\ int\ containing\ the\ next\ number\ in\ the\ file\r\n\ \ @throws\ \ \ \ java.io.EOFException\ if\ EOF\r\n\ \ @throws\ \ \ \ java.lang.NumberFormatException\ if\ next\ token\ is\ not\ an\ int\r\n\ \ @throws\ \ \ \ java.io.IOException\ if\ another\ type\ of\ input\ error\ occurs\r\n
+comment4.params=
+comment4.target=java.lang.String\ readString()
+comment4.text=\ Returns\ the\ next\ token\ in\ the\ file\ as\ a\ string.\r\n\ \ @return\ \ \ \ \ a\ String\ containing\ the\ next\ token\ in\ the\ file;\ or\ null\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ end\ of\ file\ is\ encountered\r\n\ \ @throws\ \ \ \ \ java.io.IOException\ if\ an\ input\ error\ occurs\r\n
+comment5.params=maze
+comment5.target=void\ readWalls(Maze)
+comment5.text=\ Reads\ location\ information\ for\ the\ walls\ in\ the\ maze\ and\r\n\ \ constructs\ the\ walls.\r\n\ \ @param\ maze\ \ \ the\ maze\ in\ which\ walls\ should\ be\ created\r\n\ \ @throws\ RuntimeException\ \ \ if\ invalid\ location\ information\ is\ read\r\n
+comment6.params=maze\ file
+comment6.target=void\ writeGrid(edu.kzoo.grid.Grid,\ java.io.File)
+comment6.text=\ Reads\ information\ about\ a\ maze\ from\ an\ initial\ configuration\r\n\ \ data\ file.\r\n\ \ @param\ \ maze\ \ \ \ \ \ \ the\ maze\ to\ save\r\n\ \ @param\ \ file\ \ \ \ \ \ \ java.io.File\ object\ from\ which\ to\ read\r\n\ \ @throws\ UnsupportedOperationException\r\n
+numComments=7

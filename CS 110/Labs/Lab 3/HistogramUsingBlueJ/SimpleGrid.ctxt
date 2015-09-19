@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=numRows\ numCols
+comment0.target=SimpleGrid(int,\ int)
+comment0.text=Constructs\ a\ new\ SimpleGrid\ object\ with\ the\ given\ number\ of\ rows\nand\ the\ given\ number\ of\ columns.\n@param\ numRows\ \ \ \ the\ number\ of\ rows\ to\ give\ this\ simple\ grid\n@param\ numCols\ \ \ \ the\ number\ of\ columns\ to\ give\ this\ simple\ grid\n\n
+comment1.params=row\ col
+comment1.target=GridObject\ objectAt(int,\ int)
+comment1.text=Returns\ the\ object\ at\ a\ specific\ (row,\ col)\ location\ in\ this\ grid.\n@param\ row\ \ \ \ the\ row\ in\ which\ to\ look\ (where\ the\ first\ row\ is\ 0)\n@param\ col\ \ \ \ the\ column\ in\ which\ to\ look\ (where\ the\ first\ column\ is\ 0)\n@return\ \ \ \ \ \ \ the\ object\ at\ location\ <code>(row,\ col)</code>;\n<code>null</code>\ if\ <code>(row,\ col)</code>\ is\ not\ in\nthe\ grid\ or\ is\ empty.\ \ For\ example,\ the\ call\n<code>objectAt(0,\ 0)</code>\ returns\ the\ object\ in\ the\nupper-left\ corner\ (first\ row,\ first\ column),\ if\ there\nis\ one,\ otherwise\ it\ returns\ <code>null</code>.\n\n
+comment2.params=obj\ row\ col
+comment2.target=void\ add(GridObject,\ int,\ int)
+comment2.text=Adds\ a\ new\ object\ to\ this\ grid\ at\ the\ specified\ (row,\ col)\ location.\n(Precondition\:\ <code>obj.grid()</code>\ and\n<code>obj.location()</code>\ are\ both\ <code>null</code>;\ location\n<code>(row,\ col)</code>\ is\ a\ valid\ empty\ location\ in\ this\ grid.)\n@param\ obj\ the\ new\ object\ to\ be\ added\n@param\ row\ \ \ \ the\ row\ in\ which\ to\ place\ <code>obj</code>\n(row\ numbering\ starts\ at\ 0)\n@param\ col\ \ \ \ the\ column\ in\ which\ to\ place\ <code>obj</code>\n(column\ numbering\ starts\ at\ 0)\n@throws\ \ \ \ IllegalArgumentException\ if\ the\ precondition\ is\ not\ met\n\n
+comment3.params=row\ col
+comment3.target=void\ remove(int,\ int)
+comment3.text=Removes\ whatever\ object\ is\ at\ the\ specified\ location\ in\ this\ grid.\nIf\ there\ is\ no\ object\ at\ the\ specified\ location,\ this\ method\ does\nnothing.\n@param\ row\ \ \ \ \ the\ row\ location\ from\ which\ to\ remove\ an\ object\n(row\ numbering\ starts\ at\ 0)\n@param\ col\ \ \ \ \ the\ column\ location\ from\ which\ to\ remove\ an\ object\n(column\ numbering\ starts\ at\ 0)\n\n
+numComments=4

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=AbstractPercolator()
+comment0.text=\ Constructs\ an\ abstract\ percolator\ (not\ yet\ in\ a\ grid).\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\ Acts\ (percolates)\ for\ one\ step\ in\ the\ percolation\ simulation.\r\n
+numComments=2

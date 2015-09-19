@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=WinWithMarkedRow()
+comment0.text=Constructs\ an\ object\ of\ this\ class.
+comment1.params=
+comment1.target=java.lang.String\ description()
+comment1.text=\ Returns\ the\ description\ of\ this\ particular\ strategy.\r\n
+comment2.params=card
+comment2.target=boolean\ isWinner(BingoCard)
+comment2.text=\ Returns\ <code>true</code>\ if\ the\ given\ bingo\ card\ is\ a\ winner\ according\r\n\ \ to\ the\ strategy\ of\ looking\ for\ a\ completely\ marked\ row.\r\n
+comment3.params=card\ row
+comment3.target=boolean\ isWinningRow(BingoCard,\ int)
+comment3.text=\ Returns\ <code>true</code>\ if\ the\ given\ row\ of\ the\ given\ bingo\ card\r\n\ \ is\ a\ winning\ (completely\ marked)\ row.\r\n
+comment4.params=obj
+comment4.target=boolean\ equals(java.lang.Object)
+comment4.text=Redefined\ from\ Object\ class.
+numComments=5

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;FileWriter.java&apos; to &apos;FileCreator.java&apos;&#x0D;&#x0A;- Original project: &apos;SIPPractice&apos;&#x0D;&#x0A;- Original element: &apos;FileWriter.java&apos;&#x0D;&#x0A;- Renamed element: &apos;FileCreator.java&apos;" description="Rename compilation unit &apos;FileWriter.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;{FileWriter.java" name="FileCreator.java" references="false" stamp="1435848328243" version="1.0"/>
+</session>

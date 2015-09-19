@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SIPPractice/src/GUI.java&apos; to &apos;FileSelectorGUI.java&apos;" description="Rename resource &apos;GUI.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/GUI.java" name="FileSelectorGUI.java" stamp="1439592898457" updateReferences="true"/>
+</session>

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=java.lang.String\ description()
+comment0.text=\r\n\ This\ returns\ the\ description\ of\ how\ to\ win\ using\ the\ Perimeter\ strategy.\r\n
+comment1.params=bingoCard
+comment1.target=boolean\ isWinner(BingoCard)
+comment1.text=\r\n\ Returns\ <code>true</code>\ if\ all\ of\ the\ values\ in\ all\ of\ the\ values\ \r\n\ along\ the\ perimeter\ are\ marked.\r\n
+comment2.params=bingoCard
+comment2.target=boolean\ perimeterChecker(BingoCard)
+comment2.text=\r\n\ Return\ <code>false</code>\ if\ any\ of\ the\ cells\ in\ a\ row\ are\ not\ marked.\r\n\ Returns\ <code>\ true</code>\ if\ all\ cells\ in\ a\ row\ are\ marked.\r\n
+comment3.params=
+comment3.target=java.lang.String\ winningStatement()
+comment3.text=\r\n\ Returns\ a\ <code>String</code>\ to\ tell\ the\ user\ how\ they\ won.\r\n
+comment4.params=obj
+comment4.target=boolean\ equals(java.lang.Object)
+comment4.text=\r\n\ \ \ \ This\ method\ will\ cause\ any\ two\ objects\ of\ this\ strategy\ class\ to\ be\ treated\ as\ equal.\r\n
+numComments=5

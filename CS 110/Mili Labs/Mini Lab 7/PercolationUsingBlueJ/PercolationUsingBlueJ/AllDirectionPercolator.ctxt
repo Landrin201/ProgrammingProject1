@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=AllDirectionPercolator()
+comment0.text=\r\n\ Constructor\ with\ no\ parameters.\r\n
+comment1.params=
+comment1.target=AbstractPercolator\ duplicate()
+comment1.text=\r\n\ Create\ a\ new\ gravitational\ percolator\ to\ add\ to\ the\ grid.\r\n
+comment2.params=
+comment2.target=java.util.ArrayList\ getPercolationLocations()
+comment2.text=\ \r\n\ Returns\ an\ array\ list\ of\ all\ of\ the\ locations\ to\ percolate\ to\r\n
+numComments=3

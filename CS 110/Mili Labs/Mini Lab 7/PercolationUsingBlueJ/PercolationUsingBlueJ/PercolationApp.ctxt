@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main(java.lang.String[])
+comment0.text=\ Start\ the\ Percolation\ program\ by\ creating\ its\ graphical\ user\r\n\ \ interface.\ \ The\ user\ will\ control\ all\ actions\ after\ that\ point.\r\n\ \ \ \ @param\ args\ \ not\ used\ in\ this\ application\r\n
+numComments=1

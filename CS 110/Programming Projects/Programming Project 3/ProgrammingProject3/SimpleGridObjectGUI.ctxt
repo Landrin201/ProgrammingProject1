@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=grid\ studentName\ assistants\ date
+comment0.target=SimpleGridObjectGUI(edu.kzoo.grid.BoundedGrid,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment0.text=\ Constructs\ a\ new\ SimpleGridObjectGUI\ object\ (a\ graphical\ user\ interface\r\n\ \ for\ a\ Simple\ Grid\ Object\ application)\r\n\ \ @param\ grid\ \ \ \ the\ grid\ to\ be\ displayed\ by\ this\ GUI\r\n\ \ @param\ studentName\ \ \ \ the\ name\ of\ the\ student\ creating\ this\ program\r\n\ \ @param\ assistants\ \ \ \ \ the\ name\ of\ anyone\ who\ helped\ with\ this\ program\r\n\ \ @param\ date\ \ \ \ \ \ \ \ \ \ \ the\ date\ when\ the\ program\ was\ finished\r\n
+numComments=1

@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=
+comment0.target=int\ getHour()
+comment0.text=\r\n\ Returns\ an\ hour\ in\ the\ range\ of\ 0\ -\ 23.\ \ (Should\ be\ the\ hour\ of\r\n\ the\ current\ time\ of\ day,\ but\ is\ actually\ a\ random\ hour.)\r\n\ \r\n\ @return\ \ \ \ \ the\ hour\ \r\n
+numComments=1

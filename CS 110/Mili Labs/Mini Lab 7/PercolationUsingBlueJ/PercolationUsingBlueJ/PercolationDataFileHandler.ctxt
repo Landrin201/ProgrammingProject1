@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=file
+comment0.target=edu.kzoo.grid.Grid\ readGrid(java.io.File)
+comment0.text=\ Reads\ information\ about\ a\ vertical\ slice\ of\ a\ porous\ material\ from\r\n\ \ an\ initial\ configuration\ data\ file.\r\n\ \ @param\ \ file\ \ \ \ \ \ \ java.io.File\ object\ from\ which\ to\ read\r\n\ \ @throws\ java.io.FileNotFoundException\ if\ file\ cannot\ be\ opened\r\n\ \ @throws\ RuntimeException\ \ \ if\ invalid\ information\ is\ read\ from\ file\r\n
+comment1.params=
+comment1.target=edu.kzoo.grid.Grid\ buildGrid()
+comment1.text=\ Reads\ vertical\ slice\ specifications\ and\ constructs\ grid.\r\n\ \ @throws\ RuntimeException\ \ if\ invalid\ information\ is\ read\r\n
+comment2.params=grid
+comment2.target=void\ readSolidCellLocs(edu.kzoo.grid.Grid)
+comment2.text=\ Reads\ location\ information\ for\ the\ solid\ cells\ in\ the\ porous\ material\r\n\ \ and\ represent\ them\ in\ the\ grid.\r\n\ \ @param\ grid\ \ \ the\ grid\ in\ which\ solid\ cells\ should\ be\ created\r\n\ \ @throws\ RuntimeException\ \ \ if\ invalid\ location\ information\ is\ read\r\n
+comment3.params=grid
+comment3.target=edu.kzoo.grid.Location\ readLocation(edu.kzoo.grid.Grid)
+comment3.text=\ Reads\ in\ a\ Location\ object\ (must\ be\ a\ valid\ location\ in\r\n\ \ <code>grid</code>).\r\n\ \ @param\ grid\ \ \ \ \ \ grid\ in\ which\ location\ must\ be\ valid\r\n\ \ @return\ \ the\ newly\ created\ Location\ object\r\n\ \ @throws\ RuntimeException\ \ \ if\ invalid\ location\ information\ is\ read\r\n
+comment4.params=
+comment4.target=int\ readInt()
+comment4.text=\ Returns\ the\ next\ token\ in\ the\ file\ as\ an\ integer.\r\n\ \ @return\ \ \ \ an\ int\ containing\ the\ next\ number\ in\ the\ file\r\n\ \ @throws\ \ \ \ java.io.EOFException\ if\ EOF\r\n\ \ @throws\ \ \ \ java.lang.NumberFormatException\ if\ next\ token\ is\ not\ an\ int\r\n\ \ @throws\ \ \ \ java.io.IOException\ if\ another\ type\ of\ input\ error\ occurs\r\n
+comment5.params=
+comment5.target=java.lang.String\ readString()
+comment5.text=\ Returns\ the\ next\ token\ in\ the\ file\ as\ a\ string.\r\n\ \ @return\ \ \ \ \ a\ String\ containing\ the\ next\ token\ in\ the\ file;\ or\ null\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ end\ of\ file\ is\ encountered\r\n\ \ @throws\ \ \ \ \ java.io.IOException\ if\ an\ input\ error\ occurs\r\n
+comment6.params=grid\ file
+comment6.target=void\ writeGrid(edu.kzoo.grid.Grid,\ java.io.File)
+comment6.text=\ Writes\ information\ about\ a\ vertical\ slice\ of\ a\ porous\ material\ into\r\n\ \ a\ data\ file,\ including\ the\ material's\ dimensions\ and\ the\ locations\ of\r\n\ \ the\ solid\ cells.\r\n\ \ @param\ \ grid\ \ \ grid\ to\ write\ to\ file\r\n\ \ @param\ \ file\ \ \ java.io.File\ object\ to\ which\ to\ write\r\n\ \ @throws\ java.io.FileNotFoundException\ if\ file\ cannot\ be\ opened\r\n\ \ @throws\ java.io.IOException\ if\ error\ writing\ to\ file\r\n
+numComments=7

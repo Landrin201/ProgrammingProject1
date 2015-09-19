@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=java.lang.String\ description()
+comment0.text=\r\n\ \ \ \ \ \ \ This\ returns\ the\ description\ of\ how\ to\ win\ using\ the\ DiagonalWinner\ strategy.\r\n
+comment1.params=bingoCard
+comment1.target=boolean\ isWinner(BingoCard)
+comment1.text=\r\n\ \ \ \ \ \ \ Returns\ <code>true</code>\ if\ all\ of\ the\ values\ in\ any\ diagonal\ are\ marked.\r\n\ \ \ \ \ \ \ If\ any\ value\ in\ a\ diagonal\ is\ not\ marked,\ returns\ <code>false</code>.\r\n
+comment2.params=bingoCard
+comment2.target=boolean\ forwardDiagonalChecker(BingoCard)
+comment2.text=\r\n\ \ \ \ \ \ \ Returns\ <code>false</code>\ if\ any\ of\ the\ values\ in\ any\ forward\ diagonal\ are\ not\ marked.\r\n\ \ \ \ \ \ \ If\ all\ values\ in\ a\ forward\ diagonal\ are\ marked,\ returns\ <code>true</code>.\r\n
+comment3.params=bingoCard
+comment3.target=boolean\ reverseDiagonalChecker(BingoCard)
+comment3.text=\r\n\ \ \ \ \ \ \ Returns\ <code>false</code>\ if\ any\ of\ the\ values\ in\ any\ reverse\ diagonal\ are\ not\ marked.\r\n\ \ \ \ \ \ \ If\ all\ values\ in\ a\ reverse\ diagonal\ are\ marked,\ returns\ <code>true</code>.\r\n
+comment4.params=
+comment4.target=java.lang.String\ winningStatement()
+comment4.text=\r\n\ \ \ \ \ \ \ Returns\ a\ <code>String</code>\ to\ tell\ the\ user\ how\ they\ won\ the\ game.\r\n
+comment5.params=obj
+comment5.target=boolean\ equals(java.lang.Object)
+comment5.text=\r\n\ \ \ \ \ \ \ This\ method\ will\ cause\ any\ two\ objects\ of\ this\ strategy\ class\ to\ be\ treated\ as\ equal.\r\n
+numComments=6

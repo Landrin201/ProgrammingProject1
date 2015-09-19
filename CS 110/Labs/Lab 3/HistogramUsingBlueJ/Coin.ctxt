@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Coin()
+comment0.text=Constructs\ a\ coin\ that\ has\ not\ yet\ been\ tossed;\ neither\n<code>heads</code>\ nor\ <code>tails</code>\ will\ return\n<code>true</code>\ until\ the\ <code>toss</code>\ method\ is\ninvoked.\ \ The\ coin\ is\ balanced,\ so\ each\ coin\ toss\ has\nan\ equal\ (0.5)\ probability\ of\ turning\ up\ heads\ or\ tails.\n\n
+comment1.params=seed
+comment1.target=void\ setSeed(long)
+comment1.text=Seeds\ the\ random\ number\ generator\ used\ by\ coins.\nThe\ <code>static</code>\ keyword\ indicates\ that\ this\ method\ndoes\ not\ have\ to\ be\ invoked\ on\ a\ specific\ <code>Coin</code>\nobject;\ instead,\ it\ can\ be\ invoked\ on\ the\ class,\ as\ in\n<code>Coin.setSeed(longValue)</code>.\ \n\n
+comment2.target=void\ toss()
+comment2.text=Tosses\ this\ coin.\ *\n
+comment3.target=boolean\ heads()
+comment3.text=Reports\ whether\ the\ last\ coin\ toss\ came\ up\ heads.\n(Precondition\:\ coin\ has\ been\ tossed\ at\ least\ once.)\n@return\ <code>true</code>\ if\ the\ last\ coin\ toss\nresulted\ in\ a\ coin\ showing\ heads;\n<code>false</code>\ otherwise.\n\n
+comment4.target=boolean\ tails()
+comment4.text=Reports\ whether\ the\ last\ coin\ toss\ came\ up\ tails.\n(Precondition\:\ coin\ has\ been\ tossed\ at\ least\ once.)\n@return\ <code>true</code>\ if\ the\ last\ coin\ toss\nresulted\ in\ a\ coin\ showing\ tails;\n<code>false</code>\ otherwise.\n\n
+numComments=5
